@@ -1,8 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lexend+Deca:wght@100..900&family=Outfit:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&family=Syne:wght@400..800&display=swap');
 @import "tailwindcss";
+
 @custom-variant dark (&:where(.dark, .dark *));
 @theme {
     --color-primary: #2F2F2F;
     --color-secondary: #E8E8DE;
     --color-dan: #A85C5C;
     --color-swe: #5A7FA8;
+
+    --text-nume: 96px;
+    --text-rest: 66px;
+    --text-restrest: 34px;
+
+    --font-primary: 'Inter', sans-serif;
+    --font-secondary: 'Outfit', sans-serif;
 }
