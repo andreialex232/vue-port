@@ -13,8 +13,8 @@
             <div class="col-start-1 col-span-13 row-1 text-center">
                 <h1 class="uppercase font-secondary tracking-tight text-nume">
                 alex 
-                <span class="-mr-[0.10em]">v</span>
-                <span class="-mr-[0.10em]">ă</span>
+                <span class="-mr-[0.15em]">v</span>
+                <span class="-mr-[0.15em]">ă</span>
                 <span>tui</span>
                 </h1>
             </div>
