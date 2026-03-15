@@ -1,18 +1,29 @@
 <script lang="ts" setup>
     import gsap from 'gsap';
     import { ref, onMounted } from 'vue';
-    const isOpen = ref(false);
-    const lang = ref("english");
+    /* const isOpen = ref(false); */
 
-    const toggleLangMenu = () => {
+    const props = defineProps({
+        isOpen: Boolean,
+        lang: String,
+        toggleMenu: {
+            type: Function, 
+            default: () => { console.error("nav component props error") }
+        }
+    })
+
+    const swe = 'swedish';
+    const dan = 'danish';
+    const en = 'english'
+    /* const toggleLangMenu = () => {
         isOpen.value = !isOpen.value;
         console.log(isOpen.value)
-    }
+    } */
 
-    const selectedLang = (language: string) => {
+    /* const selectedLang = (language: string) => {
         lang.value = language;
         isOpen.value = false;
-    }
+    } */
     const dropdownEnter = (el: Element, done: () => void) => {
             gsap.fromTo(el, {
                 opacity: 0,
@@ -60,8 +71,8 @@
                 class="rounded-t-lg relative cursor-pointer flex text-center justify-center align-center place-items-center btn-secondary">
                 <div 
                     class="flex text-center justify-center align-center place-items-center gap-2 px-4 py-2 "
-                    @click="toggleLangMenu()">
-                    <p>Language:</p>
+                    @click="toggleMenu()">
+                    <p class="capitalize">Language:</p>
                     <img v-if="lang === 'english'" src="../assets/svgs/united-kingdom.svg" width="24px" alt="">
                     <img v-if="lang === 'swedish'" src="../assets/svgs/sweden.svg" width="24px" alt="">
                     <img v-if="lang === 'danish'" src="../assets/svgs/denmark.svg" width="24px" alt="">
@@ -82,22 +93,22 @@
                     class="rounded-b-lg absolute flex flex-col justify-start align-start text-start right-0 top-10 w-full -mt-2 pt-2"
                     v-if="isOpen">
                         <li 
-                            @click="selectedLang('swedish')"
+                            @click="$emit('changed-lang', swe)"
                             class="flex gap-2 justify-start align-start text-start px-4 py-1 btn-tertiary pt-2 pb-2">
-                            <p>Swedish</p>
+                            <p class="capitalize">{{ swe }}</p>
                             <img src="../assets/svgs/sweden.svg" width="24px" alt="">
                         </li>
                         <li 
-                            @click="selectedLang('danish')"
+                            @click="$emit('changed-lang', dan)"
                             class="flex gap-2 justify-start align-start text-start px-4 py-1 btn-tertiary pt-2 pb-2">
-                            <p>Danish</p>
+                            <p class="capitalize">{{ dan }}</p>
                             <img src="../assets/svgs/denmark.svg" width="24px" alt="">
                             
                         </li>
                         <li 
-                            @click="selectedLang('english')"
+                            @click="$emit('changed-lang', en)"
                             class="flex gap-2 justify-start align-start text-start px-4 py-1 btn-tertiary pt-2 pb-2">
-                            <p>English</p>
+                            <p class="capitalize">{{ en }}</p>
                             <img src="../assets/svgs/united-kingdom.svg" width="24px" alt="">
                         </li>
                     </ul>
