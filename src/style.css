@@ -26,3 +26,16 @@
   50% { opacity: 0; }
 }
 
+@layer components {
+    .btn {
+        @apply bg-primary px-8 py-3 text-secondary rounded-lg cursor-pointer hover:shadow-xl hover:-translate-y-1 transition-all active:-translate-y-0
+    }
+
+    .btn-secondary {
+        @apply hover:bg-secondary hover:text-primary rounded-lg 
+    }
+
+    .btn-tertiary {
+        @apply hover:bg-primary hover:text-secondary
+    }
+}
