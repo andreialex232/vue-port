@@ -4,8 +4,10 @@
 </script>
 
 <template>
-    <Nav></Nav>
-    <RouterView></RouterView>
+    <div class="grid relative text-secondary">
+        <Nav class="justify-end absolute right-0 z-100"></Nav>
+        <RouterView></RouterView>
+    </div>
 </template>
 
 <style scoped></style>
