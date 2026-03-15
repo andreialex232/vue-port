@@ -1,10 +1,10 @@
 <script setup lang="ts">
     import { RouterView } from 'vue-router';
     import Nav from './components/Nav.vue';
-    import { ref } from 'vue';
+    import { onMounted, ref, watch } from 'vue';
 
     const isOpen = ref(false);
-    const lang = ref('english');
+    const lang = ref(sessionStorage.getItem('lang') || 'english');
 
     // opens and closes lang menu
     const toggleLangMenu = () => {
@@ -16,11 +16,16 @@
         lang.value = payload;
     }
 
-    // combines langChange and toggleMenu
+    // calls langChange and toggleMenu
     const handleChangedLang = (payload: string) => {
         langChange(payload);
         toggleLangMenu();
     }
+
+    // watches language and sets new preference to session storage
+    watch(lang, (newValue) => {
+        sessionStorage.setItem('lang', newValue);
+    })
     
 </script>
 
