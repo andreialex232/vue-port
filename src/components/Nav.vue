@@ -1,6 +1,6 @@
 <script lang="ts" setup>
     import gsap from 'gsap';
-    import { ref, onMounted } from 'vue';
+    import { ref } from 'vue';
     /* const isOpen = ref(false); */
     const navElement = ref<HTMLElement | null> (null)
 
@@ -62,10 +62,6 @@
                 onComplete: () => { done() }
             })
         }
-
-    onMounted(() => {
-        
-    })
 </script>
 
 <template>
