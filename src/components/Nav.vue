@@ -2,7 +2,12 @@
     import gsap from 'gsap';
     import { ref, onMounted } from 'vue';
     /* const isOpen = ref(false); */
+    const navElement = ref<HTMLElement | null> (null)
 
+    defineExpose({
+        navElement
+    })
+    
     const props = defineProps({
         isOpen: Boolean,
         lang: String,
@@ -69,7 +74,7 @@
             <li
                 :class="isOpen ? 'bg-secondary text-primary' : ''"
                 class="rounded-t-lg relative cursor-pointer flex text-center justify-center align-center place-items-center btn-secondary">
-                <div 
+                <div ref="navElement"
                     class="flex text-center justify-center align-center place-items-center gap-2 px-4 py-2 "
                     @click="toggleMenu()">
                     <p class="capitalize">Language:</p>

@@ -3,6 +3,8 @@
     import Nav from './components/Nav.vue';
     import { onMounted, ref, watch } from 'vue';
 
+    const navComponent: any = ref<InstanceType<typeof navComponent> | null >(null);
+    
     const isOpen = ref(false);
     const lang = ref(sessionStorage.getItem('lang') || 'english');
 
@@ -26,12 +28,21 @@
     watch(lang, (newValue) => {
         sessionStorage.setItem('lang', newValue);
     })
+
+    const closeDropdownClickAnywhere = (event: MouseEvent) => {
+        if (navComponent.value && !navComponent.value.navElement.contains(event.target as Node)) {
+            isOpen.value = false;
+        }
+    }
     
 </script>
 
 <template>
-    <div class="grid relative text-secondary">
+    <div
+    @click="closeDropdownClickAnywhere"
+    class="grid relative text-secondary">
         <Nav 
+            ref="navComponent"
             :toggleMenu="toggleLangMenu"
             :lang
             :is-open
