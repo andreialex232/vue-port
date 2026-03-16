@@ -53,7 +53,7 @@
                 prefer a
             </div>
             <div class="relative ml-25 flex uppercase gap-3 text-rest font-semibold col-start-3">
-                <img class="bg-secondary z-100" src="../assets/svgs/video-icon.svg" width="72px" alt="">
+                <img class="bg-secondary z-100" src="../assets/svgs/video-player.svg" width="72px" alt="">
                 <p 
                     class=""
                     ref="videoWord">video</p>
