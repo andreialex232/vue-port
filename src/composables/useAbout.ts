@@ -1,7 +1,7 @@
 import { ref } from "vue"
 
 export const useAbout = () => {
-    const aboutText = ref<about[]> ([
+    const aboutText = ref<About[]> ([
         {
             title: "The Journey",
             description: "Originally from Romania, currently living and studying in Denmark. One of the reasons I chose to move here is my admiration for Scandinavia. Not just the culture but the way technology and society are built on efficiency and high standards. I wanted to immerse myself in an environment that values quality and logic, and I’ve spent my time here adapting my technical approach to match those expectations."
@@ -18,7 +18,7 @@ export const useAbout = () => {
     return { aboutText }
 }
 
-interface about {
+interface About {
     title: string,
     description: string
 }
