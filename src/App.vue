@@ -1,6 +1,7 @@
 <script setup lang="ts">
     import { RouterView } from 'vue-router';
     import Nav from './components/Nav.vue';
+    import Footer from './components/Footer.vue';
     import { onMounted, ref, watch } from 'vue';
 
     const navComponent: any = ref<InstanceType<typeof navComponent> | null >(null);
@@ -47,8 +48,10 @@
             :lang
             :is-open
             @changed-lang = handleChangedLang
-            class="justify-end absolute right-0 z-100"></Nav>
+            class="justify-end absolute right-0 z-100">
+        </Nav>
         <RouterView></RouterView>
+        <Footer></Footer>
     </div>
 </template>
 
