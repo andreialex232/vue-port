@@ -7,6 +7,7 @@
     --color-secondary: #E8E8DE;
     --color-dan: #A85C5C;
     --color-swe: #5A7FA8;
+    --color-input-border: #c9c9bf;
 
     --text-nume: 96px;
     --text-rest: 66px;
@@ -37,5 +38,17 @@
 
     .btn-tertiary {
         @apply hover:bg-primary hover:text-secondary
+    }
+
+    .input-custom {
+        @apply block border border-input-border pl-4 w-full pt-2 pb-2 shadow-md focus:outline-none focus:shadow-xl transition-all
+    }
+
+    .social-btn {
+        @apply hover:-translate-y-1 transition-all active:-translate-y-0
+    }
+
+    .social-btn-shadow {
+        @apply hover:-translate-y-1 transition-all active:-translate-y-0 hover:text-shadow-sm
     }
 }
