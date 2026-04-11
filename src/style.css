@@ -15,11 +15,18 @@
 
     --font-primary: 'Inter', sans-serif;
     --font-secondary: 'Outfit', sans-serif;
+
+    --breakpoint-xs: 450px;
+    --breakpoint-xxs: 350px;
 }
 
 .cursor::after {
   content: "_";
   animation: blink 1s step-end infinite;
+}
+
+body {
+    background-color: var(--color-secondary);
 }
 
 @keyframes blink {
@@ -46,6 +53,10 @@
 
     .social-btn {
         @apply hover:-translate-y-1 transition-all active:-translate-y-0
+    }
+
+    .social-btn-bg {
+        @apply hover:-translate-y-1 transition-all active:-translate-y-0 hover:bg-secondary hover:text-primary
     }
 
     .social-btn-shadow {
