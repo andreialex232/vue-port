@@ -6,6 +6,11 @@
 
     const { aboutText } = useAbout();
     const videoWord = ref(null);
+    const isVideoVisible = ref(false);
+
+    function deactivateVideoButton () {
+        isVideoVisible.value = !isVideoVisible.value;
+    }
 
     const getVideoCv = () => {
     const tl = gsap.timeline();
@@ -15,7 +20,7 @@
         duration: 0.6,
         ease: "power2.in"
     })
-    .to({}, { duration: 1 }) // This is your "pause for a second"
+    .to({}, { duration: 0 }) // This is your "pause for a second"
     .fromTo(".video-section", 
         { x: window.innerWidth }, // Start position (offscreen left)
         { 
@@ -29,8 +34,12 @@
         }
     );
 }
-    
 
+const handleGettingVideoCv = () => {
+    getVideoCv();
+    deactivateVideoButton();
+}
+    
     onMounted(() => {
             gsap.set(".video-section", {
         x: window.innerWidth * 2
@@ -87,8 +96,8 @@
         </div>
     </section>
 
-    <section aria-labelledby="desktop-heading" class="desktop-section hidden lg:flex bg-secondary text-primary w-dvw pb-30 font-secondary">
-        <div class="flex-1 flex flex-col justify-center items-center px-8">
+    <section aria-labelledby="desktop-heading" class="mt-10 desktop-section hidden lg:flex bg-secondary text-primary w-dvw pb-30 font-secondary">
+        <div class="flex-1 flex flex-col justify-center items-center">
             <div class="w-full max-w-2xl">
                 <header class="flex justify-center items-center h-16 bg-secondary text-primary font-secondary mb-4">
                     <h2 id="desktop-heading" class="text-primary font-secondary text-2xl font-bold">Core & Context</h2>
@@ -119,7 +128,7 @@
 
                 <div class="relative flex uppercase gap-3 text-rest font-semibold justify-center mt-4">
                     <img class="lg:w-[60px] xl:w-[72px] bg-secondary z-100" src="../assets/svgs/video-player.svg" width="60" height="60" alt="" aria-hidden="true">
-                    <p class="lg:text-5xl xl:text-rest" ref="videoWord">video</p>
+                    <p class="z-50 lg:text-5xl xl:text-rest" ref="videoWord">video</p>
                 </div>
 
                 <div class="text-restrest mt-2 lg:translate-x-16 2xl:translate-x-32 w-fit ml-auto">
@@ -127,15 +136,19 @@
                 </div>
 
                 <div class="mt-8">
-                    <button @click="getVideoCv" class="btn" aria-label="Yes please, show me the video version">Yes please</button>
+                    <button @click="handleGettingVideoCv" :disabled="isVideoVisible" class="btn" aria-label="Yes please, show me the video version">Yes please</button>
                 </div>
             </div>
 
-                <section class="video-section text-center w-fit absolute">
-                    <div class="text-center w-fit">
-                        <video class="text-center" width="700px" :src=videoSource></video>
-                    </div>
-                </section>
+                <section class="pr-8 video-section absolute">
+                <div class="flex justify-center items-center w-full">
+                    <video 
+                        class="w-[700px] max-w-[90vw] h-auto shadow-2xl" 
+                        controls 
+                        :src="videoSource">
+                    </video>
+                </div>
+            </section>
         </aside>
     </section>
 
