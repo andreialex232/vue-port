@@ -2,12 +2,39 @@
     import { ref, onMounted } from 'vue';
     import { useAbout } from '@/composables/useAbout.ts';
     import gsap from 'gsap';
+    import videoSource from "@/assets/videos/ninety-dark.mp4"
 
     const { aboutText } = useAbout();
     const videoWord = ref(null);
+
+    const getVideoCv = () => {
+    const tl = gsap.timeline();
+
+    tl.to(".desktop-video-side > div", { // Targets the text container
+        x: window.innerWidth,
+        duration: 0.6,
+        ease: "power2.in"
+    })
+    .to({}, { duration: 1 }) // This is your "pause for a second"
+    .fromTo(".video-section", 
+        { x: window.innerWidth }, // Start position (offscreen left)
+        { 
+            x: 0,                   // End position (center/original)
+            duration: 0.8, 
+            ease: "power2.out",
+            onStart: () => {
+                // Ensure the video section is visible when animation starts
+                gsap.set(".video-section", { opacity: 1 });
+            }
+        }
+    );
+}
     
 
     onMounted(() => {
+            gsap.set(".video-section", {
+        x: window.innerWidth * 2
+    })
         const tl = gsap.timeline()
 
         for (let i = 0; i < 3; i++) {
@@ -79,7 +106,7 @@
             </div>
         </div>
 
-        <aside aria-label="Alternative content format" class="flex-1 flex flex-col justify-center items-center">
+        <aside aria-label="Alternative content format" class="relative desktop-video-side flex-1 flex flex-col justify-center items-center">
             <div class="text-center w-fit">
                 
                 <div class="uppercase text-rest font-semibold lg:-translate-x-16 2xl:-translate-x-32 w-fit">
@@ -100,13 +127,34 @@
                 </div>
 
                 <div class="mt-8">
-                    <button class="btn" aria-label="Yes please, show me the video version">Yes please</button>
+                    <button @click="getVideoCv" class="btn" aria-label="Yes please, show me the video version">Yes please</button>
                 </div>
             </div>
+
+                <section class="video-section text-center w-fit absolute">
+                    <div class="text-center w-fit">
+                        <video class="text-center" width="700px" :src=videoSource></video>
+                    </div>
+                </section>
         </aside>
     </section>
+
+
 </template>
 
 <style scoped>
+/* Ensure the parent can contain the absolute child */
+.desktop-video-side {
+    overflow: hidden; /* Prevents scrollbars during animation */
+    position: relative;
+}
 
+/* Hide the video initially */
+.video-section {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); /* Centers it perfectly */
+    opacity: 0; 
+}
 </style>
