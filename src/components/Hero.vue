@@ -121,10 +121,12 @@
         <video 
             class="absolute -z-10 w-full h-full object-cover pointer-events-none" 
             :src="videoSource"
-            playsinline autoplay loop muted preload="auto">
+            playsinline autoplay loop muted preload="auto"
+            aria-hidden="true"
+            title="Background atmospheric video">
         </video>
 
-        <div class="font-primary py-12 md:py-20 grid h-full w-full grid-cols-12 grid-rows-6 md:grid-rows-4 px-6 md:px-12">
+        <section class="font-primary py-12 md:py-20 grid h-full w-full grid-cols-12 grid-rows-6 md:grid-rows-4 px-6 md:px-12">
             
             <div class="pt-20 md:pt-0 col-span-12 row-start-1 text-center">
                 <h1 class="uppercase font-secondary tracking-tight text-5xl sm:text-7xl md:text-8xl lg:text-nume leading-none">
@@ -138,19 +140,20 @@
             <div class="text-xl sm:text-2xl md:text-3xl row-start-3 md:row-start-2 col-start-2 col-span-8 md:col-start-1 md:col-span-3 lg:col-start-3 lg:col-span-3 text-left self-center">
                 <div 
                     ref="kindOfDev" 
+                    aria-live="polite"
                     class="text-lg sm:text-restrest h-[1.2em] flex items-end leading-none"></div>
-                <div class="text-4xl italic sm:text-rest font-medium">Developer</div>
+                <p class="text-4xl italic sm:text-rest font-medium">Developer</p>
             </div>
 
             <div class="mt-20 md:mt-0 flex flex-col text-xl sm:text-2xl md:text-3xl row-start-4 md:row-start-3 col-start-5 md:col-start-6 col-span-7 lg:col-start-8 lg:col-span-3 items-end self-center">
-                <div class="text-lg sm:text-restrest">...based in</div>
-                <div class="text-4xl italic text-dan sm:text-rest font-medium">Denmark</div>
+                <p class="text-lg sm:text-restrest">...based in</p>
+                <address class="not-italic text-4xl italic text-dan sm:text-rest font-medium">Denmark</address>
             </div>
 
-            <div class="text-base md:text-xl pt-10 font-secondary row-start-6 md:row-start-4 text-center col-span-12 self-end md:self-auto">
-                open to opportunities
-            </div>
-        </div>
+            <p class="text-base md:text-xl pt-10 font-secondary row-start-6 md:row-start-4 text-center col-span-12 self-end md:self-auto">
+                Open to opportunities
+            </p>
+        </section>
     </header>
 </template>
 
