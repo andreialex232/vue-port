@@ -117,7 +117,7 @@
                                 @click="$emit('changed-lang', swe)"
                                 class="cursor-pointer block w-full flex gap-2 justify-start align-start text-start px-4 py-1 btn-tertiary pt-2 pb-2">
                                 <span class="capitalize">{{ swe }}</span>
-                                <img aria-hidden="true" src="../assets/svgs/sweden.svg" width="24" height="24" alt="">
+                                <img preload aria-hidden="true" src="../assets/svgs/sweden.svg" width="24" height="24" alt="">
                             </button>
                         </li>
 
@@ -129,7 +129,7 @@
                                 @click="$emit('changed-lang', dan)"
                                 class="cursor-pointer block w-full flex gap-2 justify-start align-start text-start px-4 py-1 btn-tertiary pt-2 pb-2">
                                 <span class="capitalize">{{ dan }}</span>
-                                <img aria-hidden="true" src="../assets/svgs/denmark.svg" width="24" height="24" alt="">
+                                <img preload aria-hidden="true" src="../assets/svgs/denmark.svg" width="24" height="24" alt="">
                             </button>
                         </li>
 
@@ -141,7 +141,7 @@
                                 @click="$emit('changed-lang', en)"
                                 class="cursor-pointer block w-full flex gap-2 justify-start align-start text-start px-4 py-1 btn-tertiary pt-2 pb-2">
                                 <span class="capitalize">{{ en }}</span>
-                                <img aria-hidden="true" src="../assets/svgs/united-kingdom.svg" width="24" height="24" alt="">
+                                <img preload aria-hidden="true" src="../assets/svgs/united-kingdom.svg" width="24" height="24" alt="">
                             </button>
                         </li>
                     </ul>
