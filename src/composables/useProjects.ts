@@ -10,17 +10,18 @@ import github from "@/assets/svgs/github.svg"
 import ts from "@/assets/svgs/typescript.svg"
 import angular from "@/assets/svgs/angular.svg"
 import scss from "@/assets/svgs/scss.svg"
+import reversedGit from "@/assets/svgs/github-reversed.svg"
 
 export const useProjects = () => {
     const projects = ref<Project[]>([
         {
             id: 1,
             name: 'The Brothers Lionheart',
-            description: 'The Brothers Lionheart is a digital creative project developed during first semester at Erhvervsakademi Sydvest. It is based on the classic play "The Lionheart Brothers" by the renowned author Astrid Lindgren.',
+            description: 'The team and I brought Astrid Lindgren’s The Brothers Lionheart to life by turning the classic play into a sleek, interactive website. We achieved a smooth and professional digital experience that works perfectly on both phones and computers.  We first built designs in Figma and Adobe, making sure the look and feel matched the story’s mood. We then coded the site from scratch using HTML, CSS, and JavaScript, while using GitHub to work together effectively as a team. The result is a modern tribute that combines creative storytelling with solid technical skills.',
             image: lionheart,
             githubLink: {
                 link: "https://github.com/andreialex232/The-Lionheart-Brothers",
-                icon: github
+                icon: reversedGit
             },
             technologies: [
                 {
@@ -57,7 +58,7 @@ export const useProjects = () => {
                     
                 },
                 {
-                    name: 'Patricia Puienaru-Gundelfingen',
+                    name: 'Patricia P. Gundelfingen',
                     link: 'https://www.linkedin.com/in/patricia-gundelfingen/',
                     icon: ext
                 }
@@ -70,7 +71,7 @@ export const useProjects = () => {
             image: lionheart,
             githubLink: {
                 link: "https://github.com/andreialex232/cpm-ridesharing",
-                icon: github
+                icon: reversedGit
             },
             technologies: [
                 {
@@ -94,7 +95,7 @@ export const useProjects = () => {
             image: lionheart,
             githubLink: {
                 link: "https://github.com/andreialex232/aswik",
-                icon: github
+                icon: reversedGit
             },
             technologies: [
                 {
