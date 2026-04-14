@@ -1,5 +1,72 @@
 <script setup lang="ts">
     import { useContact } from '@/composables/useContact.ts';
+    import { ScrollTrigger } from 'gsap/all';
+    import { onMounted, reactive, ref } from 'vue';
+    import gsap from 'gsap';
+
+    gsap.registerPlugin(ScrollTrigger);
+    
+    // EmailJS setup
+    import emailjs from '@emailjs/browser';
+    emailjs.init("K__ZfCzMebqB3btfN");
+
+    const emailFeedbackMessage = ref<null | string>(null);
+    const form = ref<HTMLFormElement | null>(null);
+    const formData = reactive({
+        name: '',
+        email: '',
+        message: ''
+    });
+    const errors = reactive<Record<string, string>>({});
+
+    const validateForm = () => {
+        Object.keys(errors).forEach(key => delete errors[key]);
+  
+        if (!formData.name) {
+            errors.name = " - please enter your name";
+        }
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(formData.email)) {
+            errors.email = " - please enter a valid email address";
+        }
+        if (formData.message.length < 10) {
+            errors.message = " - message must be at least 10 characters.";
+        }
+
+        return Object.keys(errors).length === 0;
+    }
+
+    const resetForm = () => {
+        formData.name = '';
+        formData.email = '';
+        formData.message = '';
+    }
+
+    const sendEmail = () => {
+        const isValid = validateForm();
+        if (!isValid) {
+            return;
+        }
+
+        emailjs.send("service_ivwnctv", "template_lkbdd0h", {
+            name: formData.name,
+            email: formData.email,
+            message: formData.message
+        }).then(() => {
+            emailFeedbackMessage.value = "Message sent successfully!";
+            resetForm();
+            console.log("Email sent successfully");
+        }).catch((error) => {
+            console.error("EmailJS error:", error);
+            emailFeedbackMessage.value = "Failed to send message. Please try again later.";
+        });
+    }
+
+    onMounted(() => {
+        
+    /* console.log("EmailJS is loaded:", !!emailjs); */
+        
+    })
 
     const { contactMethods } = useContact()
 </script>
@@ -22,7 +89,7 @@
                     v-for="contact in contactMethods">
                     <div v-if="!contact.iconOnly">
                         <a  
-                            class="pl-2 py-1 social-btn-shadow flex gap-2 flex-row-reverse items-center" 
+                            class="social-btn-shadow flex gap-2 flex-row-reverse items-center" 
                             :href="contact.link"
                             :aria-label="'Contact via ' + contact.name">
                                 <span class="block text-sm lg:text-base">{{ contact.description }}</span>
@@ -32,15 +99,16 @@
                 </div>
                 <nav class="mt-2 flex flex-row-reverse justify-end gap-2" aria-label="Social profiles">
                     <div 
-                        v-for="contact in contactMethods"
-                        class="social-btn"
+                        v-for="(contact, index) in contactMethods"
+                        class="social-btn p-0"
                         :key="contact.name">
                         <a v-if="contact.iconOnly" 
-                           target="_blank" 
-                           rel="noopener noreferrer" 
-                           :href="contact.link"
-                           :aria-label="contact.name">
-                           <img aria-hidden="true" :src="contact.svg" alt="" width="24" height="24">
+                            :class="`icon_${index}`"
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            :href="contact.link"
+                            :aria-label="contact.name">
+                            <img aria-hidden="true" :src="contact.svg" alt="" width="24" height="24">
                         </a>
                     </div>
                 </nav>
@@ -49,20 +117,20 @@
     </div>
 
     <section aria-label="Contact Form" class="mt-12 sm:mt-0 col-start-2 col-end-12 sm:col-start-7 sm:col-end-12 xl:col-start-7 xl:col-end-12">
-        <form class="w-full h-full flex flex-col justify-between space-y-4">
+        <form @submit.prevent="sendEmail" ref="form" novalidate class="w-full h-full flex flex-col justify-between space-y-4">
             <div class="font-medium w-full field">
-                <label class="block w-full mb-1" for="name">Name</label>
-                <input class="input-custom w-full" placeholder="Your full name" type="text" id="name" name="name" required>
+                <label class="block w-full mb-1" for="name">Name<span v-if="errors.name" class="text-red-500"> {{ errors.name }}</span></label>
+                <input v-model="formData.name" class="input-custom w-full" placeholder="Your full name" type="text" id="name" name="name">
             </div>
 
             <div class="font-medium field">
-                <label class="block w-full mb-1" for="email">Email</label>
-                <input class="input-custom w-full" type="email" id="email" name="email" placeholder="your@email.com" required>
+                <label class="block w-full mb-1" for="email">Email<span v-if="errors.email" class="text-red-500"> {{ errors.email }}</span></label>
+                <input v-model="formData.email" class="input-custom w-full" type="email" id="email" name="email" placeholder="your@email.com">
             </div>
 
             <div class="font-medium field flex-grow flex flex-col">
-                <label class="block w-full mb-1" for="message">Message</label>
-                <textarea class="input-custom w-full flex-grow" id="message" name="message" rows="3" placeholder="How can I help?" required></textarea>
+                <label class="block w-full mb-1" for="message">Message <span v-if="errors.message" class="text-red-500"> {{ errors.message }}</span></label>
+                <textarea v-model="formData.message" class="input-custom w-full flex-grow" id="message" name="message" rows="3" placeholder="How can I help?"></textarea>
             </div>
 
             <button class="btn w-full sm:w-auto mt-2" type="submit">Send Message</button>
