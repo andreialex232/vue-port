@@ -77,164 +77,86 @@
     
 </script>
 
-<template>  
-    <div class="scroll bg-secondary lg:h-dvh w-dvw relative lg:overflow-hidden">  
-
+<template>
+    <div class="flex justify-center items-center h-16 bg-secondary text-primary font-secondary">
+        <h2 id="mobile-heading" class="text-primary font-secondary text-2xl font-bold mb-4">What I've Been Building</h2>
+    </div>
+  <div class="scroll bg-secondary lg:h-dvh w-dvw relative lg:overflow-hidden">
     <section 
-        :class="[`panel-${index+1}`, 'relative lg:absolute top-0 w-full lg:h-dvh bg-secondary text-primary font-secondary']" 
-        v-for="(project, index) in projects" 
-        :key="index"
-    >  
-        <!-- mobile layout -->
-        <div class="flex flex-col md:hidden px-6 py-10 gap-8">
-            <div class="text-start">
-                <h3 class="text-5xl font-secondary font-bold md:text-7xl">{{ project.name }}</h3>
-                <p class="text-md md:text-lg font-secondary mt-2">{{ project.description }}</p>
-            </div>
+      v-for="(project, index) in projects" 
+      :key="index"
+      :class="[`panel-${index+1}`, 'mb-12 last:mb-0 relative lg:absolute top-0 w-full lg:h-dvh bg-secondary text-primary font-secondary pb-6 pr-6 pl-6 flex lg:items-center justify-center overflow-y-auto lg:overflow-hidden']"
+    >
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-y-10 gap-x-10 2xl:gap-x-16 items-start w-full max-w-7xl mx-auto">
+        
+        <article class="order-1 lg:col-start-1 lg:row-start-1 bg-secondary text-primary">
+          <h3 class="text-2xl 2xl:text-4xl font-bold">{{ project.name }}</h3>
+          <p class="text-md 2xl:text-lg mt-3 opacity-90">{{ project.description }}</p>
+        </article>
 
-            <div class="flex flex-col gap-6">
-                <div>
-                    <p class="font-secondary font-bold text-lg pb-2">Technologies used:</p>
-                    <ul class="flex flex-col gap-2">
-                        <li class="text-md flex gap-2 items-center" v-for="tech in project.technologies" :key="tech.name">
-                            <img width="20px" :src="tech.icon" alt=""> {{ tech.name }}
-                        </li>
-                    </ul>
-                </div>
+        <div class="order-2 lg:col-start-2 lg:row-start-1 lg:row-span-3 flex flex-col gap-10">
+          <div class="relative w-full aspect-video flex items-center justify-center scale-105 2xl:scale-110 origin-top">
+            <img class="object-contain absolute w-full" src="../assets/svgs/tele.svg" alt="">
+            <img class="object-contain absolute w-[82%] -translate-y-[8%]" src="../assets/images/Screenshot 2026-02-21 140438 1.png" alt="">
+          </div>
 
-                <a class="social-btn w-fit flex gap-2 items-center font-secondary font-bold text-lg" :href="project.githubLink.link" target="_blank" rel="noopener noreferrer">
-                    Project Link:
-                    <img :src="project.githubLink.icon" alt="GitHub" width="20px">
+          <div v-if="project.teamMembers" class="w-full">
+            <div class="relative bg-primary p-4 text-secondary overflow-hidden shadow-lg">
+              <!-- <div class="absolute top-0 right-0 bg-secondary w-0.5 h-[150px] 2xl:h-[250px] rotate-35 opacity-25"></div>
+              <div class="absolute top-8 right-4 bg-secondary w-0.5 h-[150px] 2xl:h-[250px] rotate-35 opacity-25"></div> -->
+              <p class="font-bold text-md 2xl:text-lg pb-3 text-center">Team members:</p>
+              <ul class="flex flex-wrap justify-center gap-3">
+                <a v-for="(member, idx) in project.teamMembers" :key="member.name" class="social-btn-bg w-fit" :href="member.link" @mouseenter="hoveredMember = idx" @mouseleave="hoveredMember = null">
+                  <li class="flex gap-2 items-center p-2 2xl:text-base text-sm">
+                    {{ member.name }}
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24">
+                      <path fill="none" :stroke="hoveredMember === idx ? '#2F2F2F' : '#E8E8DE'" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6m-7 1l9-9m-5 0h5v5" />
+                    </svg>
+                  </li>
                 </a>
+              </ul>
             </div>
-
-            <div class="-my-[20%] xxs:-my-[10%] xs:my-[5%] relative w-full h-64 flex items-center justify-center">
-                <img class="object-contain absolute w-5/5 sm:w-4/5" src="../assets/svgs/tele.svg" alt="">
-                <img class="object-contain absolute w-[80%] -translate-y-[8%] sm:w-[64%]" src="../assets/images/Screenshot 2026-02-21 140438 1.png" alt="">
-            </div>
-
-            <div v-if="project.teamMembers" class="bg-primary p-4 text-secondary">
-                <p class="font-secondary font-bold text-lg pb-2 text-center">Team members:</p>
-                <ul class="flex flex-wrap justify-center gap-4">
-                    <a class="social-btn-bg w-fit" :key="member.name" v-for="(member, idx) in project.teamMembers" :href="member.link">
-                        <li class="flex gap-2 items-center p-2 text-sm">{{ member.name }}</li>
-                    </a>
-                </ul>
-            </div>
+          </div>
         </div>
 
+        <div class="order-3 lg:col-start-1 lg:row-start-2 mt-4 lg:mt-0">
+          <p class="font-bold text-lg 2xl:text-xl pb-3">Technologies used:</p>
+          <ul class="flex flex-col gap-2">
+            <li v-for="tech in project.technologies" :key="tech.name" class="flex gap-2 items-center text-sm 2xl:text-base">
+              <img :src="tech.icon" :alt="tech.name" class="w-5 2xl:w-6"> 
+              {{ tech.name }}
+            </li>
+          </ul>
+        </div>
 
-        <!-- laptop/desktop layout -->
-        <div class="hidden md:flex 2xl:hidden flex-col h-full px-12 py-8">  
-            <div class="w-full text-center mb-6">
-                <h3 class="font-secondary font-bold md:text-4xl lg:text-5xl xl:text-4xl">{{ project.name }}</h3>
-            </div>
+        <!-- <div class="order-4 lg:col-start-1 lg:row-start-3 lg:mt-0">
+          <a class="social-btn w-fit flex gap-2 items-center font-bold text-lg 2xl:text-xl" :href="project.githubLink.link" target="_blank" rel="noopener noreferrer">
+            Project Link:
+            <img :src="project.githubLink.icon" alt="GitHub" class="w-5 2xl:w-6">
+          </a>
+        </div> -->
+        <div class="order-4 lg:col-start-1 lg:row-start-3 lg:mt-0">
+          <a class="font-medium btn w-fit flex gap-2 items-center" :href="project.githubLink.link" target="_blank" rel="noopener noreferrer">
+            See Final Project:
+            <img :src="project.githubLink.icon" alt="GitHub" class="w-5 2xl:w-6">
+          </a>
+        </div>
 
-            <div class="flex flex-1 gap-10 items-center">
-                <div class="flex-1 flex flex-col gap-6">
-                    <p class="text-xl font-secondary">{{ project.description }}</p>
-                    
-                    <div>
-                        <p class="font-secondary font-bold text-lg pb-2">Technologies used:</p>
-                        <ul class="flex flex-col gap-2">
-                            <li class="flex gap-2 items-center" v-for="tech in project.technologies" :key="tech.name">
-                                <img width="24px" :src="tech.icon" alt="">
-                                {{ tech.name }}
-                            </li>
-                        </ul>
-                    </div>
-
-                    <a class="mb-6 social-btn w-fit flex gap-2 items-center font-secondary font-bold text-lg" :href="project.githubLink.link" target="_blank" rel="noopener noreferrer">
-                        Project Link:
-                        <img :src="project.githubLink.icon" alt="GitHub" width="24px">
-                    </a>
-                </div>
-
-                <div class="flex-1 flex items-end pb-12">  
-                    <div class="relative w-full h-64">  
-                        <img class="object-contain absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 2xl:-translate-y-1/2 md:w-5/5 2xl:w-4/5 lg:w-5/5" src="../assets/svgs/tele.svg" alt="">  
-                        <img class="object-contain absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[58%] 2xl:-translate-y-1/2 md:w-[78%] 2xl:w-[64%] lg:w-[80%]" src="../assets/images/Screenshot 2026-02-21 140438 1.png" alt="">  
-                    </div>  
-                </div>  
-            </div>
-
-            <div v-if="project.teamMembers" class="relative flex justify-center mt-auto mb-4">  
-                <div class="bg-primary p-4 text-secondary w-full max-w-2xl relative overflow-hidden">  
-                    <div class="absolute top-0 right-0 bg-secondary w-1 h-[150px] rotate-35"></div>  
-                    <div class="absolute top-10 right-6 bg-secondary w-1 h-[150px] rotate-35"></div>  
-                    <p class="font-secondary font-bold text-lg pb-2 text-center">Team members:</p>  
-                    <ul class="flex flex-wrap justify-center gap-4">  
-                        <a class="social-btn-bg w-fit" :key="member.name" v-for="(member, idx) in project.teamMembers" :href="member.link" @mouseenter="hoveredMember = idx" @mouseleave="hoveredMember = null">  
-                            <li class="flex gap-2 items-center p-2 text-sm">{{ member.name }}  
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">  
-                                    <path fill="none" :stroke="hoveredMember === idx ? '#2F2F2F' : '#E8E8DE'" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6m-7 1l9-9m-5 0h5v5" />  
-                                </svg>  
-                            </li>  
-                        </a>  
-                    </ul>  
-                </div>  
-            </div>  
-        </div>  
-
-
-
-        <!-- the true desktop layout (2xl and above) -->
-        <div class="hidden 2xl:grid grid-cols-12 h-full">  
-            <div class="col-start-2 col-end-5 flex flex-col justify-center z-10">  
-                <div class="flex flex-col gap-8">  
-                    <div>
-                        <h3 class="font-secondary font-bold text-6xl">  
-                            {{ project.name }}  
-                        </h3>  
-                        <p class="text-xl font-secondary mt-2">{{ project.description }}</p>
-                    </div>  
-
-                    <div>  
-                        <p class="font-secondary font-bold text-lg pb-2">Technologies used:</p>  
-                        <ul class="flex flex-col gap-1.5">  
-                            <li class="flex gap-2 items-center" v-for="tech in project.technologies" :key="tech.name"> 
-                                <img width="24px" :src="tech.icon" alt=""> {{ tech.name }}  
-                            </li>  
-                        </ul>  
-                    </div>  
-
-                    <div>  
-                        <a class="social-btn w-fit flex gap-2 items-center font-secondary font-bold text-lg" :href="project.githubLink.link" target="_blank" rel="noopener noreferrer">
-                            Project Link:  
-                            <img :src="project.githubLink.icon" alt="GitHub" width="24px">  
-                        </a>  
-                    </div>  
-
-                    <div v-if="project.teamMembers" class="relative bg-primary p-4 text-secondary">  
-                        <div class="absolute top-0 right-0 bg-secondary w-1 h-[300px] rotate-35"></div>  
-                        <div class="absolute top-20 right-10 bg-secondary w-1 h-[300px] rotate-35"></div>  
-                        <p class="font-secondary font-bold text-lg pb-4">Team members:</p>  
-                        <ul class="flex flex-col gap-2">  
-                            <a class="social-btn-bg w-fit" :key="member.name" v-for="(member, idx) in project.teamMembers" :href="member.link" @mouseenter="hoveredMember = idx" @mouseleave="hoveredMember = null">  
-                                <li class="flex gap-2 items-center p-2">{{ member.name }}  
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">  
-                                        <path fill="none" :stroke="hoveredMember === idx ? '#2F2F2F' : '#E8E8DE'" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6m-7 1l9-9m-5 0h5v5" />  
-                                    </svg>  
-                                </li>  
-                            </a>  
-                        </ul>  
-                    </div>  
-                </div>  
-            </div>  
-
-            <div class="col-start-6 col-end-13 flex items-end pb-20">  
-                <div class="relative w-full h-4/5">  
-                    <img class="object-contain absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[55.5%] 2xl:w-4/5 lg:w-full" src="../assets/svgs/tele.svg" alt="">  
-                    <img class="object-contain absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[64.5%] 2xl:w-[64%] lg:w-full" src="../assets/images/Screenshot 2026-02-21 140438 1.png" alt="">  
-                </div>  
-            </div>  
-        </div>  
-
-    </section>  
-    </div>  
+      </div>
+    </section>
+  </div>
 </template>
 
 
 
 <style scoped>
+/* .rotate-35 {
+    transform: rotate(35deg);
+}
+
+.scroll {
+    overflow-x: auto;
+    overflow-y: hidden;
+    display: flex;
+} */
 </style>
