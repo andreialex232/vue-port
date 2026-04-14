@@ -96,10 +96,10 @@ const handleGettingVideoCv = () => {
         </div>
     </section>
 
-    <section aria-labelledby="desktop-heading" class="mt-10 desktop-section hidden lg:flex bg-secondary text-primary w-dvw pb-30 font-secondary">
+    <section aria-labelledby="desktop-heading" class="pl-6 h-dvh mt-10 desktop-section hidden lg:flex bg-secondary text-primary w-dvw pb-30 font-secondary">
         <div class="flex-1 flex flex-col justify-center items-center">
             <div class="w-full max-w-2xl">
-                <header class="flex justify-center items-center h-16 bg-secondary text-primary font-secondary mb-4">
+                <header class="flex justify-center items-start h-16 bg-secondary text-primary font-secondary mb-10">
                     <h2 id="desktop-heading" class="text-primary font-secondary text-2xl font-bold">Core & Context</h2>
                 </header>
                 
@@ -115,41 +115,42 @@ const handleGettingVideoCv = () => {
             </div>
         </div>
 
-        <aside aria-label="Alternative content format" class="relative desktop-video-side flex-1 flex flex-col justify-center items-center">
-            <div class="text-center w-fit">
-                
-                <div class="uppercase text-rest font-semibold lg:-translate-x-16 2xl:-translate-x-32 w-fit">
-                    do you
-                </div>
+<aside aria-label="Alternative content format" class="relative desktop-video-side flex-1 flex flex-col justify-center items-center overflow-hidden">
+    
+    <div class="text-center w-fit">
+        <div class="uppercase text-rest font-semibold lg:-translate-x-16 2xl:-translate-x-32 w-fit">
+            do you
+        </div>
 
-                <div class="text-restrest w-fit mx-auto">
-                    prefer a
-                </div>
+        <div class="text-restrest w-fit mx-auto">
+            prefer a
+        </div>
 
-                <div class="relative flex uppercase gap-3 text-rest font-semibold justify-center mt-4">
-                    <img class="lg:w-[60px] xl:w-[72px] bg-secondary z-100" src="../assets/svgs/video-player.svg" width="60" height="60" alt="" aria-hidden="true">
-                    <p class="z-50 lg:text-5xl xl:text-rest" ref="videoWord">video</p>
-                </div>
+        <div class="lg:pl-35 relative flex uppercase gap-3 text-rest font-semibold justify-center mt-4">
+            <img class="lg:w-[60px] xl:w-[72px] bg-secondary z-100" src="../assets/svgs/video-player.svg" width="60" height="60" alt="" aria-hidden="true">
+            <p class="z-50 lg:text-5xl xl:text-rest" ref="videoWord">video</p>
+        </div>
 
-                <div class="text-restrest mt-2 lg:translate-x-16 2xl:translate-x-32 w-fit ml-auto">
-                    instead?
-                </div>
+        <div class="text-restrest mt-2 lg:translate-x-16 2xl:translate-x-32 w-fit ml-auto">
+            instead?
+        </div>
 
-                <div class="mt-8">
-                    <button @click="handleGettingVideoCv" :disabled="isVideoVisible" class="btn" aria-label="Yes please, show me the video version">Yes please</button>
-                </div>
-            </div>
+        <div class="mt-8">
+            <button @click="handleGettingVideoCv" :disabled="isVideoVisible" class="btn" aria-label="Yes please, show me the video version">Yes please</button>
+        </div>
+    </div>
 
-                <section class="pr-8 video-section absolute">
-                <div class="flex justify-center items-center w-full">
-                    <video 
-                        class="w-[700px] max-w-[90vw] h-auto shadow-2xl" 
-                        controls 
-                        :src="videoSource">
-                    </video>
-                </div>
-            </section>
-        </aside>
+    <section class="z-100 video-section absolute inset-0 flex flex-col justify-center items-center px-8 lg:px-12 2xl:px-20">
+        <div class="w-full max-w-6xl; flex flex-col items-center">
+            <h3 class="lg:text-2xl text-2xl font-bold pb-4 self-start">Let's Discuss the Logic: A Portfolio Introduction</h3>
+            <video 
+                class="w-full h-auto shadow-2xl rounded-xl border border-primary/20" 
+                controls 
+                :src="videoSource">
+            </video>
+        </div>
+    </section>
+</aside>
     </section>
 
 
