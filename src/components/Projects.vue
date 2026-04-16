@@ -101,12 +101,12 @@
           </div>
 
           <div v-if="project.teamMembers" class="w-full">
-            <div class="relative bg-primary p-4 text-secondary overflow-hidden shadow-lg">
+            <div class="rounded-lg relative bg-primary p-4 text-secondary overflow-hidden shadow-lg">
               <!-- <div class="absolute top-0 right-0 bg-secondary w-0.5 h-[150px] 2xl:h-[250px] rotate-35 opacity-25"></div>
               <div class="absolute top-8 right-4 bg-secondary w-0.5 h-[150px] 2xl:h-[250px] rotate-35 opacity-25"></div> -->
               <p class="font-bold text-md 2xl:text-lg pb-3 text-center">Team members:</p>
               <ul class="flex flex-wrap justify-center gap-3">
-                <a v-for="(member, idx) in project.teamMembers" :key="member.name" class="social-btn-bg w-fit" :href="member.link" @mouseenter="hoveredMember = idx" @mouseleave="hoveredMember = null">
+                <a v-for="(member, idx) in project.teamMembers" :key="member.name" class="rounded-lg hover:rounded-lg social-btn-bg w-fit" :href="member.link" @mouseenter="hoveredMember = idx" @mouseleave="hoveredMember = null">
                   <li class="flex gap-2 items-center p-2 2xl:text-base text-sm">
                     {{ member.name }}
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24">

@@ -120,17 +120,17 @@
         <form @submit.prevent="sendEmail" ref="form" novalidate class="w-full h-full flex flex-col justify-between space-y-4">
             <div class="font-medium w-full field">
                 <label class="block w-full mb-1" for="name">Name<span v-if="errors.name" class="text-red-500"> {{ errors.name }}</span></label>
-                <input v-model="formData.name" class="input-custom w-full" placeholder="Your full name" type="text" id="name" name="name">
+                <input v-model="formData.name" class="rounded-lg input-custom w-full" placeholder="Your full name" type="text" id="name" name="name">
             </div>
 
             <div class="font-medium field">
                 <label class="block w-full mb-1" for="email">Email<span v-if="errors.email" class="text-red-500"> {{ errors.email }}</span></label>
-                <input v-model="formData.email" class="input-custom w-full" type="email" id="email" name="email" placeholder="your@email.com">
+                <input v-model="formData.email" class="rounded-lg input-custom w-full" type="email" id="email" name="email" placeholder="your@email.com">
             </div>
 
             <div class="font-medium field flex-grow flex flex-col">
                 <label class="block w-full mb-1" for="message">Message <span v-if="errors.message" class="text-red-500"> {{ errors.message }}</span></label>
-                <textarea v-model="formData.message" class="input-custom w-full flex-grow" id="message" name="message" rows="3" placeholder="How can I help?"></textarea>
+                <textarea v-model="formData.message" class="rounded-lg input-custom w-full flex-grow" id="message" name="message" rows="3" placeholder="How can I help?"></textarea>
             </div>
 
             <button class="btn w-full sm:w-auto mt-2" type="submit">Send Message</button>
@@ -139,5 +139,7 @@
 </section>
 </template>
 <style scoped>
-
+    textarea {
+        resize: none;
+    }
 </style>
