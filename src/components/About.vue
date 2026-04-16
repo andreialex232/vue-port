@@ -41,7 +41,7 @@ const handleGettingVideoCv = () => {
 }
     
     onMounted(() => {
-            gsap.set(".video-section", {
+    gsap.set(".video-section", {
         x: window.innerWidth * 2
     })
         const tl = gsap.timeline()
@@ -99,7 +99,7 @@ const handleGettingVideoCv = () => {
     <section aria-labelledby="desktop-heading" class="pl-6 h-dvh mt-10 desktop-section hidden lg:flex bg-secondary text-primary w-dvw pb-30 font-secondary">
         <div class="flex-1 flex flex-col justify-center items-center">
             <div class="w-full max-w-2xl">
-                <header class="flex justify-center items-start h-16 bg-secondary text-primary font-secondary mb-10">
+                <header class="flex justify-center items-start h-16 bg-secondary text-primary font-secondary mt-20">
                     <h2 id="desktop-heading" class="text-primary font-secondary text-2xl font-bold">Core & Context</h2>
                 </header>
                 
