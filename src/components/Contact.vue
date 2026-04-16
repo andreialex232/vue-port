@@ -11,7 +11,7 @@
     emailjs.init("K__ZfCzMebqB3btfN");
 
     const emailFeedbackMessage = ref<null | string>(null);
-    const form = ref<HTMLFormElement | null>(null);
+    const sendButtonText = ref<string>('Send Message');
     const formData = reactive({
         name: '',
         email: '',
@@ -53,12 +53,14 @@
             email: formData.email,
             message: formData.message
         }).then(() => {
+            sendButtonText.value = "Sending...";
             emailFeedbackMessage.value = "Message sent successfully!";
             resetForm();
             console.log("Email sent successfully");
         }).catch((error) => {
             console.error("EmailJS error:", error);
             emailFeedbackMessage.value = "Failed to send message. Please try again later.";
+            sendButtonText.value = "Send Message";
         });
     }
 
@@ -133,7 +135,7 @@
                 <textarea v-model="formData.message" class="rounded-lg input-custom w-full flex-grow" id="message" name="message" rows="3" placeholder="How can I help?"></textarea>
             </div>
 
-            <button class="btn w-full sm:w-auto mt-2" type="submit">Send Message</button>
+            <button class="btn w-full sm:w-auto mt-2" type="submit">{{ sendButtonText }}</button>
         </form>
     </section>
 </section>
