@@ -9,72 +9,63 @@
     const hoveredMember = ref<number | null>(null);
 
 
-    onMounted(() => {
-       const mm = gsap.matchMedia();
-       mm.add("(min-width: 1024px)", () => {
-        
+onMounted(() => {
+    const mm = gsap.matchMedia();
+    mm.add("(min-width: 1024px)", () => {
         
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: ".scroll",
                 pin: true,
                 scrub: 1,
-                markers: true,
-                // Calculate distance: (Number of moving panels) * 100vh
-                end: () => `+=${(projects.value.length + 1) * window.innerHeight} + 1000`, // Adding extra space to ensure the last panel has time to animate in
-                invalidateOnRefresh: true, // Re-calculates if window is resized
+                end: () => `+=${(projects.value.length + 1) * window.innerHeight} + 1000`,
+                invalidateOnRefresh: true,
+                // We keep onEnter to show it, but let the timeline handle the exit
+                onEnter: () => gsap.to(".progress-container", { opacity: 1, duration: 0.2 }),
+                onEnterBack: () => gsap.to(".progress-container", { opacity: 1, duration: 0.2 }),
+                onLeave: () => gsap.to(".progress-container", { opacity: 0, duration: 0.1 }),
+                onLeaveBack: () => gsap.to(".progress-container", { opacity: 0, duration: 0.1 }),
             }
         });
 
-        /* projects.value.slice(1).forEach((project, index) => {
-            const target = `.panel-${index + 2}`;
-            
-            tl.fromTo(target, {
-                x: 3000, 
-                
-            }, {
-                x: 0,
-                duration: 1,
-                ease: "none"
-            })
+        const totalDuration = (projects.value.length - 1) * 1.2 + 0.2;
 
-        }) */
+        // 1. Progress Bar Growth
+        tl.to(".progress-bar-inner", {
+            scaleX: 1,
+            ease: "none",
+            duration: totalDuration
+        }, 0);
 
+        // 2. THE FADE OUT: Starts at 95% of the totalDuration
+        tl.to(".progress-container", {
+            opacity: 0,
+            duration: totalDuration * 0.05, // Takes up the last 5% of the scroll
+            ease: "power1.in"
+        }, totalDuration * 0.95); 
+
+        // 3. Panel Logic
         projects.value.slice(1).forEach((project, index) => {
-        const currentPanel = `.panel-${index + 2}`;
-        const previousPanel = `.panel-${index + 1}`;
-        
-        // We define a 'startTime'. 
-        // If index is 0, start at 0. If index is 1, start at 2.
-        const startTime = index * 1.2; // 1.2 is the total time for both exit and entry (1 for exit + 1 for entry, with some overlap)
+            const currentPanel = `.panel-${index + 2}`;
+            const previousPanel = `.panel-${index + 1}`;
+            const startTime = index * 1.2;
 
-        // 1. Move the PREVIOUS panel out
-        tl.to(previousPanel, {
-            xPercent: -100,
-            duration: 1, // Only takes half the "slot"
-            ease: "power2.inOut" // Smoother start/stop
-        }, startTime);
+            tl.to(previousPanel, {
+                xPercent: -100,
+                duration: 1,
+                ease: "power2.inOut"
+            }, startTime);
 
-        // 2. Move the CURRENT panel in
-        tl.fromTo(currentPanel, 
-            { xPercent: 100 }, 
-            { 
-                xPercent: 0, 
-                duration: 1, 
-                ease: "power2.inOut" 
-            }, 
-            startTime // Starts at the exact same time as the exit above
-        );
-        tl.to({}, { duration: 0.2 }); // A tiny pause before unpinning
-        // The timeline now "rests" for 1 duration unit before the next loop starts
+            tl.fromTo(currentPanel, 
+                { xPercent: 100 }, 
+                { xPercent: 0, duration: 1, ease: "power2.inOut" }, 
+                startTime
+            );
+            
+            tl.to({}, { duration: 0.2 }); 
+        });
     });
-
-       });
-
-
-
 });
-    
 </script>
 
 <template>
@@ -142,8 +133,20 @@
           </a>
         </div>
 
+ <!--        <div class="progress-container fixed bottom-0 left-0 w-full h-1.5 bg-primary/10 z-[60] opacity-0 pointer-events-none lg:block hidden">
+            <div class="progress-bar-inner h-full bg-primary origin-left scale-x-0 w-full"></div>
+        </div> -->
+
       </div>
     </section>
+
+
+    <div class="h-4 progress-container fixed bottom-0 left-0 w-full h-1.5 bg-primary/10 z-[60] opacity-0 pointer-events-none lg:block hidden">
+      <div class="progress-bar-inner h-full bg-primary origin-left scale-x-0 w-full"></div>
+    </div>
+
+
+
   </div>
 </template>
 
