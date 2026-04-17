@@ -96,11 +96,11 @@ const handleGettingVideoCv = () => {
         </div>
     </section>
 
-    <section aria-labelledby="desktop-heading" class="pl-6 h-dvh mt-10 desktop-section hidden lg:flex bg-secondary text-primary w-dvw pb-30 font-secondary">
+    <section aria-labelledby="desktop-heading" class="lg:mt-30 xl:pt-20 pl-6 h-dvh pt-20 desktop-section hidden lg:flex bg-secondary text-primary w-dvw lg:mb-40 xl:pb-30 font-secondary">
         <div class="flex-1 flex flex-col justify-center items-center">
             <div class="w-full max-w-2xl">
-                <header class="flex justify-center items-start h-16 bg-secondary text-primary font-secondary mt-20">
-                    <h2 id="desktop-heading" class="text-primary font-secondary text-2xl font-bold">Core & Context</h2>
+                <header class="flex justify-center items-start h-16 bg-secondary text-primary font-secondary">
+                    <h2 id="desktop-heading" class="text-primary font-secondary text-4xl 2xl:text-5xl font-bold">Core & Context</h2>
                 </header>
                 
                 <div 
@@ -141,7 +141,7 @@ const handleGettingVideoCv = () => {
     </div>
 
     <section class="z-100 video-section absolute inset-0 flex flex-col justify-center items-center px-8 lg:px-12 2xl:px-20">
-        <div class="w-full max-w-6xl; flex flex-col items-center">
+        <div class="w-full max-w-6xl flex flex-col items-center">
             <h3 class="lg:text-2xl text-2xl font-bold pb-4 self-start">Let's Discuss the Logic: A Portfolio Introduction</h3>
             <video 
                 class="w-full h-auto shadow-2xl rounded-xl border border-primary/20" 
@@ -166,9 +166,6 @@ const handleGettingVideoCv = () => {
 /* Hide the video initially */
 .video-section {
     position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%); /* Centers it perfectly */
     opacity: 0; 
 }
 </style>

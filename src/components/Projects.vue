@@ -69,9 +69,10 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="flex justify-center items-center h-16 bg-secondary text-primary font-secondary">
-        <h2 id="mobile-heading" class="text-primary font-secondary text-2xl font-bold mb-4">What I've Been Building</h2>
-    </div>
+  <div class="lg:mt-10 xl:mt-0 flex justify-center items-center h-16 bg-secondary text-primary font-secondary">
+      <h2 id="mobile-heading" class="text-primary font-secondary text-2xl lg:text-4xl xl:text-5xl font-bold mb-4">What I've Been Building</h2>
+  </div>
+
   <div class="scroll bg-secondary lg:h-dvh w-dvw relative lg:overflow-hidden">
     <section 
       v-for="(project, index) in projects" 

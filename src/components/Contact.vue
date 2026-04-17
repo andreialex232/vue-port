@@ -22,16 +22,16 @@
     const validateForm = () => {
         Object.keys(errors).forEach(key => delete errors[key]);
   
-        if (!formData.name) {
-            errors.name = " - please enter your name";
-        }
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(formData.email)) {
-            errors.email = " - please enter a valid email address";
-        }
-        if (formData.message.length < 10) {
-            errors.message = " - message must be at least 10 characters.";
-        }
+            if (!formData.name) {
+                errors.name = " - please enter your name";
+            }
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(formData.email)) {
+                errors.email = " - please enter a valid email address";
+            }
+            if (formData.message.length < 10) {
+                errors.message = " - message must be at least 10 characters.";
+            }
 
         return Object.keys(errors).length === 0;
     }
