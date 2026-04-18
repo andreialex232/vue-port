@@ -1,90 +1,25 @@
 <script setup lang="ts">
     import { useProjects } from '@/composables/useProjects';
-    import { ref, onMounted } from 'vue';
+    import { fadeIn } from '@/utils/animations';
+    import { ref, onMounted, onUnmounted } from 'vue';
     const { projects } = useProjects();
-    import gsap from 'gsap';
-    import ScrollTrigger from 'gsap/src/ScrollTrigger';
-    gsap.registerPlugin(ScrollTrigger)
-
+    import { useSideScroll } from '@/composables/useSideScrollAnim';
+    const { initAnimations, cleanup } = useSideScroll('.scroll', projects);
     const hoveredMember = ref<number | null>(null);
 
 
-onMounted(() => {
-  const mm = gsap.matchMedia();
-  mm.add("(min-width: 1024px)", () => {
-    
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".scroll",
-        pin: true,
-        scrub: 1,
-        // Ensure the end matches your project count
-        end: () => `+=${projects.value.length * 100}%`,
-        invalidateOnRefresh: true,
-        
-        // onToggle fires the moment you enter or leave the trigger area
-        onToggle: (self) => {
-          if (self.isActive) {
-            // Instant show when active
-            gsap.set(".progress-container", { opacity: 1, display: "block" });
-          } else {
-            // Instant hide when you scroll past the top or bottom
-            gsap.set(".progress-container", { opacity: 0, display: "none" });
-          }
-        }
+    onMounted(() => {
+      initAnimations();
+      for(let i = 1; i < projects.value.length + 1; i ++) {
+        fadeIn(`.panel-${i}`, 'y')
       }
-    });
 
-    const totalDuration = (projects.value.length - 1) * 1.2 + 0.2;
-
-    // 1. Progress Bar Growth (Keep this in the timeline for scrubbing)
-    tl.to(".progress-bar-inner", {
-      scaleX: 1,
-      ease: "none",
-      duration: totalDuration
-    }, 0);
-
-    // 2. Panel Logic
-    projects.value.slice(1).forEach((project, index) => {
-      const currentPanel = `.panel-${index + 2}`;
-      const previousPanel = `.panel-${index + 1}`;
-      const startTime = index * 1.2;
-
-      tl.to(previousPanel, {
-        xPercent: -100,
-        duration: 1,
-        ease: "power2.inOut"
-      }, startTime);
-
-      tl.fromTo(currentPanel, 
-        { xPercent: 100 }, 
-        { xPercent: 0, duration: 1, ease: "power2.inOut" }, 
-        startTime
-      );
       
-      tl.to({}, { duration: 0.2 }); 
-    });
-  });
-});
 
-    
-            /* gsap.fromTo(".scroll", 
-            {
-              y: 30,
-              opacity:0
-            },
-            {
-              y: 0,
-              opacity:1,
-              duration: 0.5, 
-                  ease: "power1.inOut",
-                  scrollTrigger: {
-                      markers: false,
-                      trigger: `.scroll`, 
-                      start: "top 70%",    
-                      toggleActions: "play none none none",
-                  
-          }}); */
+    });
+    onUnmounted(() => {
+      cleanup();
+    })
 
 
 
@@ -93,7 +28,7 @@ onMounted(() => {
 
 <template>
   <div class="projects_header lg:mt-10 xl:mt-0 flex justify-center items-center h-16 bg-secondary text-primary font-secondary">
-      <h2 id="mobile-heading" class="text-primary font-secondary text-2xl lg:text-4xl xl:text-5xl font-bold mb-4">What I've Been Building</h2>
+      <h2 id="mobile-heading" class="pb-6 sm:pb-0 text-primary font-secondary text-2xl lg:text-4xl xl:text-5xl font-bold mb-4">What I've Been Building</h2>
   </div>
 
   <div class="scroll bg-secondary lg:h-dvh w-dvw relative lg:overflow-hidden">
