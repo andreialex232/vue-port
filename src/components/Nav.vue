@@ -85,9 +85,9 @@
                     @click="toggleMenu()">
                     <span class="capitalize">Language:</span>
                     
-                    <img v-if="lang === 'english'" src="../assets/svgs/united-kingdom.svg" width="24" height="24" alt="English selected">
-                    <img v-if="lang === 'swedish'" src="../assets/svgs/sweden.svg" width="24" height="24" alt="Svenska selected">
-                    <img v-if="lang === 'danish'" src="../assets/svgs/denmark.svg" width="24" height="24" alt="Dansk selected">
+                    <img fetchpriority="high" preload v-if="lang === 'english'" src="../assets/svgs/united-kingdom.svg" width="24" height="24" alt="English selected">
+                    <img fetchpriority="high" preload v-if="lang === 'swedish'" src="../assets/svgs/sweden.svg" width="24" height="24" alt="Svenska selected">
+                    <img fetchpriority="high" preload v-if="lang === 'danish'" src="../assets/svgs/denmark.svg" width="24" height="24" alt="Dansk selected">
                     
                     <svg
                         aria-hidden="true"
@@ -117,7 +117,7 @@
                                 @click="$emit('changed-lang', swe)"
                                 class="cursor-pointer block w-full flex gap-2 justify-start align-start text-start px-4 py-1 btn-tertiary pt-2 pb-2">
                                 <span class="capitalize">{{ swe }}</span>
-                                <img preload aria-hidden="true" src="../assets/svgs/sweden.svg" width="24" height="24" alt="">
+                                <img preload fetchpriority="high" aria-hidden="true" src="../assets/svgs/sweden.svg" width="24" height="24" alt="">
                             </button>
                         </li>
 
@@ -129,7 +129,7 @@
                                 @click="$emit('changed-lang', dan)"
                                 class="cursor-pointer block w-full flex gap-2 justify-start align-start text-start px-4 py-1 btn-tertiary pt-2 pb-2">
                                 <span class="capitalize">{{ dan }}</span>
-                                <img preload aria-hidden="true" src="../assets/svgs/denmark.svg" width="24" height="24" alt="">
+                                <img preload fetchpriority="high" aria-hidden="true" src="../assets/svgs/denmark.svg" width="24" height="24" alt="">
                             </button>
                         </li>
 
@@ -141,7 +141,7 @@
                                 @click="$emit('changed-lang', en)"
                                 class="cursor-pointer block w-full flex gap-2 justify-start align-start text-start px-4 py-1 btn-tertiary pt-2 pb-2">
                                 <span class="capitalize">{{ en }}</span>
-                                <img preload aria-hidden="true" src="../assets/svgs/united-kingdom.svg" width="24" height="24" alt="">
+                                <img preload fetchpriority="high" aria-hidden="true" src="../assets/svgs/united-kingdom.svg" width="24" height="24" alt="">
                             </button>
                         </li>
                     </ul>
