@@ -10,66 +10,89 @@
 
 
 onMounted(() => {
-    const mm = gsap.matchMedia();
-    mm.add("(min-width: 1024px)", () => {
+  const mm = gsap.matchMedia();
+  mm.add("(min-width: 1024px)", () => {
+    
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".scroll",
+        pin: true,
+        scrub: 1,
+        // Ensure the end matches your project count
+        end: () => `+=${projects.value.length * 100}%`,
+        invalidateOnRefresh: true,
         
-        const tl = gsap.timeline({
-            scrollTrigger: {
-                trigger: ".scroll",
-                pin: true,
-                scrub: 1,
-                end: () => `+=${(projects.value.length + 1) * window.innerHeight} + 1000`,
-                invalidateOnRefresh: true,
-                // We keep onEnter to show it, but let the timeline handle the exit
-                onEnter: () => gsap.to(".progress-container", { opacity: 1, duration: 0.2 }),
-                onEnterBack: () => gsap.to(".progress-container", { opacity: 1, duration: 0.2 }),
-                onLeave: () => gsap.to(".progress-container", { opacity: 0, duration: 0.1 }),
-                onLeaveBack: () => gsap.to(".progress-container", { opacity: 0, duration: 0.1 }),
-            }
-        });
-
-        const totalDuration = (projects.value.length - 1) * 1.2 + 0.2;
-
-        // 1. Progress Bar Growth
-        tl.to(".progress-bar-inner", {
-            scaleX: 1,
-            ease: "none",
-            duration: totalDuration
-        }, 0);
-
-        // 2. THE FADE OUT: Starts at 95% of the totalDuration
-        tl.to(".progress-container", {
-            opacity: 0,
-            duration: totalDuration * 0.05, // Takes up the last 5% of the scroll
-            ease: "power1.in"
-        }, totalDuration * 0.95); 
-
-        // 3. Panel Logic
-        projects.value.slice(1).forEach((project, index) => {
-            const currentPanel = `.panel-${index + 2}`;
-            const previousPanel = `.panel-${index + 1}`;
-            const startTime = index * 1.2;
-
-            tl.to(previousPanel, {
-                xPercent: -100,
-                duration: 1,
-                ease: "power2.inOut"
-            }, startTime);
-
-            tl.fromTo(currentPanel, 
-                { xPercent: 100 }, 
-                { xPercent: 0, duration: 1, ease: "power2.inOut" }, 
-                startTime
-            );
-            
-            tl.to({}, { duration: 0.2 }); 
-        });
+        // onToggle fires the moment you enter or leave the trigger area
+        onToggle: (self) => {
+          if (self.isActive) {
+            // Instant show when active
+            gsap.set(".progress-container", { opacity: 1, display: "block" });
+          } else {
+            // Instant hide when you scroll past the top or bottom
+            gsap.set(".progress-container", { opacity: 0, display: "none" });
+          }
+        }
+      }
     });
+
+    const totalDuration = (projects.value.length - 1) * 1.2 + 0.2;
+
+    // 1. Progress Bar Growth (Keep this in the timeline for scrubbing)
+    tl.to(".progress-bar-inner", {
+      scaleX: 1,
+      ease: "none",
+      duration: totalDuration
+    }, 0);
+
+    // 2. Panel Logic
+    projects.value.slice(1).forEach((project, index) => {
+      const currentPanel = `.panel-${index + 2}`;
+      const previousPanel = `.panel-${index + 1}`;
+      const startTime = index * 1.2;
+
+      tl.to(previousPanel, {
+        xPercent: -100,
+        duration: 1,
+        ease: "power2.inOut"
+      }, startTime);
+
+      tl.fromTo(currentPanel, 
+        { xPercent: 100 }, 
+        { xPercent: 0, duration: 1, ease: "power2.inOut" }, 
+        startTime
+      );
+      
+      tl.to({}, { duration: 0.2 }); 
+    });
+  });
 });
+
+    
+            /* gsap.fromTo(".scroll", 
+            {
+              y: 30,
+              opacity:0
+            },
+            {
+              y: 0,
+              opacity:1,
+              duration: 0.5, 
+                  ease: "power1.inOut",
+                  scrollTrigger: {
+                      markers: false,
+                      trigger: `.scroll`, 
+                      start: "top 70%",    
+                      toggleActions: "play none none none",
+                  
+          }}); */
+
+
+
+
 </script>
 
 <template>
-  <div class="lg:mt-10 xl:mt-0 flex justify-center items-center h-16 bg-secondary text-primary font-secondary">
+  <div class="projects_header lg:mt-10 xl:mt-0 flex justify-center items-center h-16 bg-secondary text-primary font-secondary">
       <h2 id="mobile-heading" class="text-primary font-secondary text-2xl lg:text-4xl xl:text-5xl font-bold mb-4">What I've Been Building</h2>
   </div>
 
@@ -94,8 +117,6 @@ onMounted(() => {
 
           <div v-if="project.teamMembers" class="w-full">
             <div class="rounded-lg relative bg-primary p-4 text-secondary overflow-hidden shadow-lg">
-              <!-- <div class="absolute top-0 right-0 bg-secondary w-0.5 h-[150px] 2xl:h-[250px] rotate-35 opacity-25"></div>
-              <div class="absolute top-8 right-4 bg-secondary w-0.5 h-[150px] 2xl:h-[250px] rotate-35 opacity-25"></div> -->
               <p class="font-bold text-md 2xl:text-lg pb-3 text-center">Team members:</p>
               <ul class="flex flex-wrap justify-center gap-3">
                 <a v-for="(member, idx) in project.teamMembers" :key="member.name" class="rounded-lg hover:rounded-lg social-btn-bg w-fit" :href="member.link" @mouseenter="hoveredMember = idx" @mouseleave="hoveredMember = null">
@@ -121,12 +142,6 @@ onMounted(() => {
           </ul>
         </div>
 
-        <!-- <div class="order-4 lg:col-start-1 lg:row-start-3 lg:mt-0">
-          <a class="social-btn w-fit flex gap-2 items-center font-bold text-lg 2xl:text-xl" :href="project.githubLink.link" target="_blank" rel="noopener noreferrer">
-            Project Link:
-            <img :src="project.githubLink.icon" alt="GitHub" class="w-5 2xl:w-6">
-          </a>
-        </div> -->
         <div class="order-4 lg:col-start-1 lg:row-start-3 lg:mt-0">
           <a class="font-medium btn w-fit flex gap-2 items-center" :href="project.githubLink.link" target="_blank" rel="noopener noreferrer">
             See Final Project:
@@ -134,15 +149,12 @@ onMounted(() => {
           </a>
         </div>
 
- <!--        <div class="progress-container fixed bottom-0 left-0 w-full h-1.5 bg-primary/10 z-[60] opacity-0 pointer-events-none lg:block hidden">
-            <div class="progress-bar-inner h-full bg-primary origin-left scale-x-0 w-full"></div>
-        </div> -->
 
       </div>
     </section>
 
 
-    <div class="h-4 progress-container fixed bottom-0 left-0 w-full h-1.5 bg-primary/10 z-[60] opacity-0 pointer-events-none lg:block hidden">
+    <div class="h-4 progress-container fixed bottom-0 left-0 w-full h-1.5 bg-primary/10 z-[60] pointer-events-none lg:block hidden">
       <div class="progress-bar-inner h-full bg-primary origin-left scale-x-0 w-full"></div>
     </div>
 
@@ -150,17 +162,3 @@ onMounted(() => {
 
   </div>
 </template>
-
-
-
-<style scoped>
-/* .rotate-35 {
-    transform: rotate(35deg);
-}
-
-.scroll {
-    overflow-x: auto;
-    overflow-y: hidden;
-    display: flex;
-} */
-</style>
