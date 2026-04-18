@@ -88,8 +88,8 @@ onMounted(() => {
 
         <div class="order-2 lg:col-start-2 lg:row-start-1 lg:row-span-3 flex flex-col gap-10">
           <div class="relative w-full aspect-video flex items-center justify-center scale-105 2xl:scale-110 origin-top">
-            <img class="object-contain absolute w-full" src="../assets/svgs/tele.svg" alt="">
-            <img class="object-contain absolute w-[82%] -translate-y-[8%]" src="../assets/images/Screenshot 2026-02-21 140438 1.png" alt="">
+            <img loading="lazy" class="object-contain absolute w-full" src="../assets/svgs/tele.svg" alt="">
+            <img loading="lazy" class="object-contain absolute w-[82%] -translate-y-[8%]" :src="project.image" :alt="project.name">
           </div>
 
           <div v-if="project.teamMembers" class="w-full">
@@ -115,7 +115,7 @@ onMounted(() => {
           <p class="font-bold text-lg 2xl:text-xl pb-3">Technologies used:</p>
           <ul class="flex flex-col gap-2">
             <li v-for="tech in project.technologies" :key="tech.name" class="flex gap-2 items-center text-sm 2xl:text-base">
-              <img :src="tech.icon" :alt="tech.name" class="w-5 2xl:w-6"> 
+              <img loading="lazy" :src="tech.icon" :alt="tech.name" class="w-5 2xl:w-6"> 
               {{ tech.name }}
             </li>
           </ul>
@@ -130,7 +130,7 @@ onMounted(() => {
         <div class="order-4 lg:col-start-1 lg:row-start-3 lg:mt-0">
           <a class="font-medium btn w-fit flex gap-2 items-center" :href="project.githubLink.link" target="_blank" rel="noopener noreferrer">
             See Final Project:
-            <img :src="project.githubLink.icon" alt="GitHub" class="w-5 2xl:w-6">
+            <img loading="lazy" :src="project.githubLink.icon" alt="GitHub" class="w-5 2xl:w-6">
           </a>
         </div>
 
