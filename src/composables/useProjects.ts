@@ -1,5 +1,5 @@
 import { ref } from "vue";
-import lionheart from "@/assets/images/Screenshot 2026-02-21 140438 1.png"
+import lionheart from "@/assets/images/brothers-lionheart.png"
 import html from "@/assets/svgs/html.svg"
 import css from "@/assets/svgs/css-3.svg"
 import figma from "@/assets/svgs/figma.svg"
@@ -138,10 +138,4 @@ interface Project {
         link: string,
         icon: string
     }[]
-} 
-
-interface Other_Projects {
-    id: number,
-    name: string,
-
 }
