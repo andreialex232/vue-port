@@ -95,7 +95,7 @@
                             :href="contact.link"
                             :aria-label="'Contact via ' + contact.name">
                                 <span class="block text-sm lg:text-base">{{ contact.description }}</span>
-                                <img :src="contact.svg" aria-hidden="true" width="20" height="20" alt="">
+                                <img loading="lazy" :src="contact.svg" aria-hidden="true" width="20" height="20" alt="">
                         </a>
                     </div>
                 </div>
@@ -110,7 +110,7 @@
                             rel="noopener noreferrer" 
                             :href="contact.link"
                             :aria-label="contact.name">
-                            <img aria-hidden="true" :src="contact.svg" alt="" width="24" height="24">
+                            <img loading="lazy" aria-hidden="true" :src="contact.svg" alt="" width="24" height="24">
                         </a>
                     </div>
                 </nav>
