@@ -2,7 +2,8 @@
     import { ref, onMounted } from 'vue';
     import { useAbout } from '@/composables/useAbout.ts';
     import gsap from 'gsap';
-    import videoSource from "@/assets/videos/ninety-dark.mp4"
+    import videoSource from "@/assets/videos/cv_optimized.mp4";
+    import posterForVideo from "@/assets/images/poster_for_video_cv.png";
 
     const { aboutText } = useAbout();
     const videoWord = ref(null);
@@ -127,7 +128,7 @@ const handleGettingVideoCv = () => {
         </div>
 
         <div class="lg:pl-35 relative flex uppercase gap-3 text-rest font-semibold justify-center mt-4">
-            <img class="lg:w-[60px] xl:w-[72px] bg-secondary z-100" src="../assets/svgs/video-player.svg" width="60" height="60" alt="" aria-hidden="true">
+            <img loading="lazy" @click="handleGettingVideoCv" class="cursor-pointer lg:w-[60px] xl:w-[72px] bg-secondary z-100" src="../assets/svgs/video-player.svg" role="button" width="60" height="60" alt="" aria-hidden="true">
             <p class="z-50 lg:text-5xl xl:text-rest" ref="videoWord">video</p>
         </div>
 
@@ -141,12 +142,17 @@ const handleGettingVideoCv = () => {
     </div>
 
     <section class="z-100 video-section absolute inset-0 flex flex-col justify-center items-center px-8 lg:px-12 2xl:px-20">
-        <div class="w-full max-w-6xl flex flex-col items-center">
+        <div v-if="isVideoVisible" class="w-full max-w-6xl flex flex-col items-center">
             <h3 class="lg:text-2xl text-2xl font-bold pb-4 self-start">Let's Discuss the Logic: A Portfolio Introduction</h3>
-            <video 
-                class="w-full h-auto shadow-2xl rounded-xl border border-primary/20" 
+            <video
+                :poster="posterForVideo"
+                class="object-cover w-full h-auto shadow-2xl rounded-xl border border-primary/20"
+                playsinline="true"
+                preload="none"
+                type="video/mp4"
                 controls 
                 :src="videoSource">
+                Your browser does not support the video tag.
             </video>
         </div>
     </section>
