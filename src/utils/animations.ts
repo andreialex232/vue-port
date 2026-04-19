@@ -34,3 +34,15 @@ export const fadeInSides = (data: any[], target: string) => {
         fadeIn(`${target}_${i}`, 'x', n)
     }
 }
+
+export const enterContactModalAnim = (el: Element, done: () => void) => {
+    gsap.fromTo(el, 
+        { opacity: 0, y: 20 }, 
+        { opacity: 1, y: 0, duration: 0.5, onComplete: done }
+    );
+};
+
+export const leaveContactModalAnim = (el: Element, done: () => void) => {
+    gsap.to(el, 
+        { opacity: 0, y: -20, duration: 0.4, onComplete: done });
+    };
