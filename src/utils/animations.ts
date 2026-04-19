@@ -4,11 +4,10 @@ gsap.registerPlugin(ScrollTrigger)
 type Axis = 'x' | 'y'
 
 
-export const fadeIn = (el:string, axis: Axis) => {
+export const fadeIn = (el:string, axis: Axis, n:number = 30) => {
     const otherAxis = axis === 'x' ? 'y' : 'x';
-    const startingNumber = 30;
     return gsap.fromTo(el, {
-        [axis]: startingNumber,
+        [axis]: n,
         [otherAxis]: 0,
         opacity: 0
     }, 
@@ -21,8 +20,17 @@ export const fadeIn = (el:string, axis: Axis) => {
         scrollTrigger: {
             markers: false,
             trigger: el,
-            start: "top 80%",
+            start: "top 90%",
             toggleActions: "play none none none"
         }
     })
+}
+
+export const fadeInSides = (data: any[], target: string) => {
+    if(!data || !data.length) return;
+
+    for(let i = 0; i < data.length; i++) {
+        const n = (i % 2 === 0) ? -30 : 30;
+        fadeIn(`${target}_${i}`, 'x', n)
+    }
 }
