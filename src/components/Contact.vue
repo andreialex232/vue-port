@@ -1,79 +1,36 @@
 <script setup lang="ts">
     import { useContact } from '@/composables/useContact.ts';
-    import { ScrollTrigger } from 'gsap/all';
-    import { onMounted, reactive, ref } from 'vue';
-    import gsap from 'gsap';
+    import { ref, computed } from 'vue';
+    import { useEmail } from '@/composables/useEmail';
+    import { enterContactModalAnim, leaveContactModalAnim } from '@/utils/animations';
 
-    gsap.registerPlugin(ScrollTrigger);
-    
-    // EmailJS setup
-    import emailjs from '@emailjs/browser';
-    emailjs.init("K__ZfCzMebqB3btfN");
-
-    const emailFeedbackMessage = ref<null | string>(null);
-    const sendButtonText = ref<string>('Send Message');
-    const formData = reactive({
-        name: '',
-        email: '',
-        message: ''
-    });
-    const errors = reactive<Record<string, string>>({});
-
-    const validateForm = () => {
-        Object.keys(errors).forEach(key => delete errors[key]);
-  
-            if (!formData.name) {
-                errors.name = " - please enter your name";
-            }
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(formData.email)) {
-                errors.email = " - please enter a valid email address";
-            }
-            if (formData.message.length < 10) {
-                errors.message = " - message must be at least 10 characters.";
-            }
-
-        return Object.keys(errors).length === 0;
-    }
-
-    const resetForm = () => {
-        formData.name = '';
-        formData.email = '';
-        formData.message = '';
-    }
-
-    const sendEmail = () => {
-        const isValid = validateForm();
-        if (!isValid) {
-            return;
-        }
-
-        emailjs.send("service_ivwnctv", "template_lkbdd0h", {
-            name: formData.name,
-            email: formData.email,
-            message: formData.message
-        }).then(() => {
-            sendButtonText.value = "Sending...";
-            emailFeedbackMessage.value = "Message sent successfully!";
-            resetForm();
-            console.log("Email sent successfully");
-        }).catch((error) => {
-            console.error("EmailJS error:", error);
-            emailFeedbackMessage.value = "Failed to send message. Please try again later.";
-            sendButtonText.value = "Send Message";
-        });
-    }
-
-    onMounted(() => {
-        
-    /* console.log("EmailJS is loaded:", !!emailjs); */
-        
-    })
-
+    const { validateForm, formFeedback, sendEmail, emailFeedbackMessage, formData, sendButtonText, errors } = useEmail()
     const { contactMethods } = useContact()
+    const showModal = ref(false)
+    const isSuccess = computed(() => emailFeedbackMessage.value?.toLowerCase().includes('success'));
+
+    const triggerModal = () => {
+        showModal.value = true;
+        setTimeout(() => { showModal.value = false; }, 3000);
+    };
+
+    const handleSendEmail = () => {
+        const isValid = validateForm();
+        if (!isValid) return;
+        formFeedback('try')
+        sendEmail(triggerModal)
+    }
+
+/*     onMounted(() => {
+        
+    console.log("EmailJS is loaded:", !!emailjs);
+        
+    }) */
+
+    
 </script>
 <template>
-<section aria-labelledby="contact-heading" class="pt-20 pb-20 lg:pt-24 lg:pb-24 bg-secondary text-primary w-dvw font-secondary grid grid-cols-12 items-stretch">
+<section aria-labelledby="contact-heading" class="lg:mt-60 mb-30 gsap_contact pt-20 pb-20 lg:pt-24 lg:pb-24 bg-secondary text-primary w-dvw font-secondary grid grid-cols-12 items-stretch">
     
     <div class="col-start-2 col-end-12 sm:col-start-2 sm:col-end-6 flex flex-col justify-between">
         <div>
@@ -119,7 +76,7 @@
     </div>
 
     <section aria-label="Contact Form" class="mt-12 sm:mt-0 col-start-2 col-end-12 sm:col-start-7 sm:col-end-12 xl:col-start-7 xl:col-end-12">
-        <form @submit.prevent="sendEmail" ref="form" novalidate class="w-full h-full flex flex-col justify-between space-y-4">
+        <form @submit.prevent="handleSendEmail" ref="form" novalidate class="w-full h-full flex flex-col justify-between space-y-4">
             <div class="font-medium w-full field">
                 <label class="block w-full mb-1" for="name">Name<span v-if="errors.name" class="text-red-500"> {{ errors.name }}</span></label>
                 <input v-model="formData.name" class="rounded-lg input-custom w-full" placeholder="Your full name" type="text" id="name" name="name">
@@ -135,7 +92,51 @@
                 <textarea v-model="formData.message" class="rounded-lg input-custom w-full flex-grow" id="message" name="message" rows="3" placeholder="How can I help?"></textarea>
             </div>
 
-            <button class="btn w-full sm:w-auto mt-2" type="submit">{{ sendButtonText }}</button>
+            <!-- <p v-if="emailFeedbackMessage" 
+                :class="emailFeedbackMessage.includes('successfully') ? 'text-green-500' : 'text-red-500'" 
+                class="text-sm mt-2">
+                {{ emailFeedbackMessage }}
+            </p> -->
+
+            <button :disabled="sendButtonText === 'Sending...'" class="btn w-full sm:w-auto mt-2" type="submit">{{ sendButtonText }}</button>
+            
+
+            <Transition 
+                @enter="enterContactModalAnim" 
+                @leave="leaveContactModalAnim" 
+                :css="false"
+            >
+                <div 
+                v-if="showModal" 
+                class="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-sm pointer-events-none"
+                >
+                <div 
+                    class="bg-secondary border-2 px-6 py-4 rounded-xl shadow-2xl flex items-center gap-4"
+                    :class="isSuccess ? 'border-green-500' : 'border-red-500'"
+                >
+                    <div 
+                    class="w-3 h-3 rounded-full shrink-0"
+                    :class="isSuccess ? 'bg-green-500' : 'bg-red-500'"
+                    ></div>
+                    
+                    <div class="flex flex-col">
+                    <p class="font-secondary font-bold text-primary uppercase tracking-wider text-xs">
+                        {{ isSuccess ? 'Success' : 'Error' }}
+                    </p>
+                    <p 
+                        class="font-primary font-medium text-sm lg:text-base"
+                        :class="isSuccess ? 'text-green-500' : 'text-red-500'"
+                    >
+                        {{ emailFeedbackMessage }}
+                    </p>
+                    </div>
+                </div>
+                </div>
+            </Transition>
+
+
+
+
         </form>
     </section>
 </section>
