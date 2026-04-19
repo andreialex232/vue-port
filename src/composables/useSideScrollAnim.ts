@@ -3,9 +3,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 import { useProjects } from "./useProjects";
 const { projects } = useProjects();
-import type { Project } from "./useProjects";
 
-export function useSideScroll(containerRef: string, project: any) {
+export function useSideScroll(container: string, project: any) {
     let mm = gsap.matchMedia();
 
     const initAnimations = () => {
