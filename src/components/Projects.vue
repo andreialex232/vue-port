@@ -89,7 +89,7 @@
     </section>
 
 
-    <div class="h-4 progress-container fixed bottom-0 left-0 w-full h-1.5 bg-primary/10 z-[60] pointer-events-none lg:block hidden">
+    <div class="progress-container fixed bottom-0 left-0 w-full h-3 bg-primary/10 z-[60] pointer-events-none lg:hidden hidden opacity-0">
       <div class="progress-bar-inner h-full bg-primary origin-left scale-x-0 w-full"></div>
     </div>
 
