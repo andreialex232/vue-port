@@ -4,6 +4,7 @@
     import gsap from 'gsap';
     import videoSource from "@/assets/videos/cv_optimized.mp4";
     import posterForVideo from "@/assets/images/poster_for_video_cv.png";
+    import { fadeIn } from '@/utils/animations';
 
     const { aboutText } = useAbout();
     const videoWord = ref(null);
@@ -36,48 +37,37 @@
     );
 }
 
-const handleGettingVideoCv = () => {
-    getVideoCv();
-    deactivateVideoButton();
-}
+    const handleGettingVideoCv = () => {
+        getVideoCv();
+        deactivateVideoButton();
+    }
+
+    const initAboutCardsAnimation = (data: any[]) => {
+        const isMobile = window.matchMedia("(max-width:1024px)").matches;
+        
+        for(let i = 0; i < data.length; i++) {
+            const selector = isMobile ? `.mobile_card_${i}` : `.card_${i}`;
+            const n = (i % 2 === 0) ? -30 : 30;
+            fadeIn(selector, 'x', n)
+        }
+    }
     
     onMounted(() => {
-    gsap.set(".video-section", {
-        x: window.innerWidth * 2
-    })
-        const tl = gsap.timeline()
+        initAboutCardsAnimation(aboutText.value);
+        fadeIn(".desktop-video-side", 'y');
 
-        for (let i = 0; i < 3; i++) {
-            const startingX = (i % 2 === 0) ? -20 : 20;
-
-            gsap.fromTo(`.card_${i}`, 
-            { 
-                x: startingX, 
-                opacity: 0 
-            }, 
-            { 
-                x: 0, 
-                opacity: 1, 
-                duration: 0.5, 
-                ease: "power1.inOut",
-                scrollTrigger: {
-                    markers: false,
-                    trigger: `.card_${i}`, 
-                    start: "top 90%",    
-                    toggleActions: "play none none none",
-                }
-            });
-        }
+        gsap.set(".video-section", {
+            x: window.innerWidth * 2
+        })
 
         gsap.to(videoWord.value, {
-            xPercent: -155,
-            yoyo: true,
-            repeat: -1,
-            duration: 2,
-            ease: "power1.inOut"
+                xPercent: -155,
+                yoyo: true,
+                repeat: -1,
+                duration: 2,
+                ease: "power1.inOut"
         })
     })
-
 </script>
 
 <template>
@@ -89,7 +79,7 @@ const handleGettingVideoCv = () => {
         <div
             v-for="(item, index) in aboutText"
             :key="item.title"
-            class="font-secondary grid grid-cols-1 gap-4 p-4">
+            :class="`mobile_card_${index} font-secondary grid grid-cols-1 gap-4 p-4`">
             <article class="bg-secondary text-primary rounded-xl border border-primary p-6 shadow-sm transition-hover hover:shadow-md">
                 <h3 class="text-xl font-bold ">{{ item.title }}</h3>
                 <p class="text-md">{{ item.description }}</p>

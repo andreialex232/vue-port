@@ -1,17 +1,24 @@
 <script lang="ts" setup>
-    import { ref } from "vue";
+    import { onMounted } from "vue";
     import { useOtherProjects } from "@/composables/useOtherProjects";
+    import { fadeInSides, fadeIn } from "@/utils/animations";
     const { otherProjects } = useOtherProjects();
 
+    onMounted(() => {
+    fadeInSides(otherProjects.value.posters, '.poster')
+    fadeIn('.wp', 'y');
+    fadeIn('.anim', 'y');
+});
 </script>
 
 <template>
     <!-- /// Desktop and larger screens layout posters -->
-<div class="hidden sm:grid grid-cols-1 lg:grid-cols-2 gap-6 p-4 px-8 md:px-16 xl:px-24 font-secondary">
+<div class="posters hidden sm:grid grid-cols-1 lg:grid-cols-2 gap-6 p-4 px-8 md:px-16 xl:px-24 font-secondary">
     <article 
-        v-for="poster in otherProjects.posters" 
+        v-for="(poster, index) in otherProjects.posters" 
         :key="poster.id"
-        class="bg-secondary text-primary flex flex-row items-center gap-6 p-6 shadow-sm transition-all hover:shadow-md xl:h-[480px] lg:h-[500px] overflow-hidden"
+        :class="`poster_${index}`"
+        class="bg-secondary text-primary flex flex-row items-center gap-6 p-6 shadow-md transition-shadow duration-300 hover:shadow-lg xl:h-[480px] lg:h-[500px] overflow-hidden"
     >
         <div class="flex-1 flex flex-col justify-between h-full py-2">
             <div>
@@ -44,11 +51,11 @@
 </div>
 
 <!-- /// Mobile screens layout posters -->
-<div class="sm:hidden grid grid-cols-1 lg:grid-cols-2 gap-6 p-4 px-8 md:px-16 xl:px-24 font-secondary">
+<div class="posters sm:hidden grid grid-cols-1 lg:grid-cols-2 gap-6 p-4 px-8 md:px-16 xl:px-24 font-secondary">
     <article 
         v-for="poster in otherProjects.posters" 
         :key="poster.id"
-        class="bg-secondary text-primary flex flex-col justify-between p-6 shadow-sm transition-all hover:shadow-md h-[800px] overflow-hidden"
+        class="bg-secondary text-primary flex flex-col justify-between p-6 transition-shadow duration-300 hover:shadow-md hover:shadow-lg h-[800px] overflow-hidden"
     >
         <div class="flex-1 flex flex-col justify-between h-full py-2">
             
@@ -89,12 +96,12 @@
 
 <!-- // Animations section - only for mobile screens -->
 
-<div class="p-4 px-8 md:px-16 xl:px-24 font-secondary">
+<div class="anim p-4 px-8 md:px-16 xl:px-24 font-secondary">
     <div class="max-w-full lg:max-w-[75%] mx-auto">
         <article 
             v-for="anim in otherProjects.animations" 
             :key="anim.id"
-            class="bg-secondary text-primary flex flex-col lg:flex-row items-center gap-10 p-10 shadow-sm transition-all hover:shadow-md lg:h-[500px] xl:h-[480px] overflow-hidden mb-10"
+            class="bg-secondary text-primary flex flex-col lg:flex-row items-center gap-10 p-10 transition-shadow duration-300 shadow-md hover:shadow-lg lg:h-[500px] xl:h-[480px] overflow-hidden mb-10"
         >
             <div class="flex-1 flex flex-col justify-between h-full py-2 order-2 lg:order-1">
                 <div>
@@ -130,12 +137,12 @@
 
 
 <!-- // Wordpress project desktops -->
-<div class="hidden sm:block p-4 px-4 md:px-16 xl:px-24 font-secondary">
+<div class="wp hidden sm:block p-4 px-4 md:px-16 xl:px-24 font-secondary">
     <div class="max-w-full lg:max-w-[75%] mx-auto">
         <article 
             v-for="wp in otherProjects.wordpress" 
             :key="wp.id"
-            class="bg-secondary text-primary flex flex-col lg:flex-row items-center gap-6 lg:gap-10 p-6 md:p-10 shadow-sm transition-all hover:shadow-md min-h-fit xl:h-[480px] lg:h-[500px] overflow-hidden mb-8"
+            class="bg-secondary text-primary flex flex-col lg:flex-row items-center gap-6 lg:gap-10 p-6 md:p-10 transition-shadow duration-300 shadow-md hover:shadow-lg min-h-fit xl:h-[480px] lg:h-[500px] overflow-hidden mb-8"
         >
             <div class="flex-1 flex flex-col justify-between h-full py-2 order-2 lg:order-1">
                 <div>
@@ -175,12 +182,12 @@
 
 
 <!-- wordpress project mobile -->
-<div class="block sm:hidden p-4 font-secondary">
+<div class="wp block sm:hidden p-4 font-secondary">
     <div class="flex flex-col gap-6">
         <article 
             v-for="wp in otherProjects.wordpress" 
             :key="wp.id"
-            class="bg-secondary text-primary flex flex-col gap-6 rounded-xl p-6 shadow-sm transition-all hover:shadow-md overflow-hidden"
+            class="bg-secondary text-primary flex flex-col gap-6 rounded-xl p-6 transition-shadow duration-300 shadow-md hover:shadow-lg overflow-hidden"
         >
             <h3 class="text-2xl md:text-4xl lg:text-3xl xl:text-4xl font-bold">
                 {{ wp.name }}
