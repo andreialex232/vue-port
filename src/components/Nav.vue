@@ -1,12 +1,21 @@
 <script lang="ts" setup>
     import gsap from 'gsap';
     import { ref } from 'vue';
-    /* const isOpen = ref(false); */
+    import { useI18n, type Locale } from 'vue-i18n';
+    
+    const { locale, t } = useI18n();
     const navElement = ref<HTMLElement | null> (null)
+
+    type LocaleType = 'en' | 'da' | 'sv'
 
     defineExpose({
         navElement
     })
+
+    /* const setLocale = (newLocale: string) => {
+        locale.value = newLocale;
+        localStorage.setItem('user-locale', newLocale);
+    } */
     
     const props = defineProps({
         isOpen: Boolean,
@@ -17,18 +26,26 @@
         }
     })
 
+    const emit = defineEmits(['changed-lang']);
+
+    const setLocale = (newLocale: LocaleType) => {
+        locale.value = newLocale;
+        localStorage.setItem('user-locale', newLocale)
+
+        const langMap: Record<LocaleType, string> = {
+            en: 'english',
+            da: 'danish',
+            sv: 'swedish'
+        }
+
+        emit('changed-lang', langMap[newLocale]);
+        props.toggleMenu();
+    }
+
     const swe = 'swedish';
     const dan = 'danish';
     const en = 'english'
-    /* const toggleLangMenu = () => {
-        isOpen.value = !isOpen.value;
-        console.log(isOpen.value)
-    } */
 
-    /* const selectedLang = (language: string) => {
-        lang.value = language;
-        isOpen.value = false;
-    } */
     const dropdownEnter = (el: Element, done: () => void) => {
             gsap.fromTo(el, {
                 opacity: 0,
@@ -83,11 +100,11 @@
                     ref="navElement"
                     class="cursor-pointer flex text-center justify-center align-center place-items-center gap-2 px-4 py-2 "
                     @click="toggleMenu()">
-                    <span class="capitalize">Language:</span>
+                    <span class="capitalize">{{ $t('nav.languageLabel') }}</span>
                     
-                    <img fetchpriority="high" preload v-if="lang === 'english'" src="../assets/svgs/united-kingdom.svg" width="24" height="24" alt="English selected">
-                    <img fetchpriority="high" preload v-if="lang === 'swedish'" src="../assets/svgs/sweden.svg" width="24" height="24" alt="Svenska selected">
-                    <img fetchpriority="high" preload v-if="lang === 'danish'" src="../assets/svgs/denmark.svg" width="24" height="24" alt="Dansk selected">
+                    <img fetchpriority="high" preload v-if="locale === 'en'" src="../assets/svgs/united-kingdom.svg" width="24" height="24" alt="English selected">
+                    <img fetchpriority="high" preload v-if="locale === 'sv'" src="../assets/svgs/sweden.svg" width="24" height="24" alt="Svenska selected">
+                    <img fetchpriority="high" preload v-if="locale === 'da'" src="../assets/svgs/denmark.svg" width="24" height="24" alt="Dansk selected">
                     
                     <svg
                         aria-hidden="true"
@@ -109,38 +126,35 @@
                         class="cursor-pointer rounded-b-lg absolute flex flex-col justify-start align-start text-start right-0 top-10 w-full -mt-2 pt-2"
                         v-if="isOpen">
                         
-                        <li role="none">
+                        <li @click="setLocale('sv')" role="none">
                             <button
                                 type="button"
                                 role="option"
-                                :aria-selected="lang === 'swedish'"
-                                @click="$emit('changed-lang', swe)"
+                                :aria-selected="locale === 'sv'"
                                 class="cursor-pointer block w-full flex gap-2 justify-start align-start text-start px-4 py-1 btn-tertiary pt-2 pb-2">
-                                <span class="capitalize">{{ swe }}</span>
+                                <span class="capitalize">Svenska</span>
                                 <img preload fetchpriority="high" aria-hidden="true" src="../assets/svgs/sweden.svg" width="24" height="24" alt="">
                             </button>
                         </li>
 
-                        <li role="none">
+                        <li @click="setLocale('da')" role="none">
                             <button
                                 type="button"
                                 role="option"
-                                :aria-selected="lang === 'danish'"
-                                @click="$emit('changed-lang', dan)"
+                                :aria-selected="locale === 'da'"
                                 class="cursor-pointer block w-full flex gap-2 justify-start align-start text-start px-4 py-1 btn-tertiary pt-2 pb-2">
-                                <span class="capitalize">{{ dan }}</span>
+                                <span class="capitalize">Dansk</span>
                                 <img preload fetchpriority="high" aria-hidden="true" src="../assets/svgs/denmark.svg" width="24" height="24" alt="">
                             </button>
                         </li>
 
-                        <li role="none">
+                        <li @click="setLocale('en')" role="none">
                             <button
                                 type="button"
                                 role="option"
-                                :aria-selected="lang === 'english'"
-                                @click="$emit('changed-lang', en)"
+                                :aria-selected="locale === 'en'"
                                 class="cursor-pointer block w-full flex gap-2 justify-start align-start text-start px-4 py-1 btn-tertiary pt-2 pb-2">
-                                <span class="capitalize">{{ en }}</span>
+                                <span class="capitalize">English</span>
                                 <img preload fetchpriority="high" aria-hidden="true" src="../assets/svgs/united-kingdom.svg" width="24" height="24" alt="">
                             </button>
                         </li>
