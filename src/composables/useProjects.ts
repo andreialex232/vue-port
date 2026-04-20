@@ -13,13 +13,45 @@ import scss from "@/assets/svgs/scss.svg"
 import reversedGit from "@/assets/svgs/github-reversed.svg"
 import mongo from "@/assets/svgs/mongo.svg"
 import node from "@/assets/svgs/nodejs.svg"
+import gsap from "@/assets/svgs/gsap-black.svg"
+import tailwind from "@/assets/svgs/tailwind.svg"
+import vue from "@/assets/svgs/vue.svg"
+import gtm from "@/assets/svgs/gtm.svg"
 
 export const useProjects = () => {
     const projects = ref<Project[]>([
         {
             id: 1,
+            name: 'Online Portfolio',
+            description: 'This site is a live look at my development philosophy. Beyond the UI, I used this project to master the synergy between Vue and GSAP. I focused heavily on the architectural health by integrating i18n and refactoring bloated components from 130+ lines down to 30. I ensured the codebase stayed lean and maintanable. To round out the experience, I implemented Vite SSG and Unhead for optimized SEO and a fast initial load, resulting in a site that is as scalable as it is performant.',
+            image: lionheart,
+            githubLink: {
+                link: "https://github.com/andreialex232/vue-port",
+                icon: reversedGit
+            },
+            technologies: [
+                {
+                    name: 'Vue.js',
+                    icon: vue
+                },
+                {
+                    name: 'GSAP',
+                    icon: gsap
+                },
+                {
+                    name: 'JavaScript',
+                    icon: js
+                },
+                {
+                    name: 'Tailwind CSS',
+                    icon: tailwind
+                },
+            ]
+        },
+        {
+            id: 2,
             name: 'The Brothers Lionheart',
-            description: "HTML, CSS, and JavaScript were mainly used by our group to make an excellent interactive website out of The Brothers Lionheart. A rating of B for sustainability in Carbon Rating was attained together with outstanding performance on the desktop, where 99 for Performance, 96 for Accessibility, 100 for Best Practices, and 100 for SEO was earned (Performance 82 on mobile).",
+            description: "For my first collaborative project, our group created a digital experience for The Brothers Lionheart. We delivered a high-performance interactive site that earned a B-rating for sustainability (Carbon Rating) and exceptional Lighthouse scores: 99 performance, 96 accessibility and 100 in both Best Practices and SEO. It was a masterclass in teamwork and technical exewcution using HTML, CSS and JS.",
             image: lionheart,
             githubLink: {
                 link: "https://github.com/andreialex232/The-Lionheart-Brothers",
@@ -67,9 +99,9 @@ export const useProjects = () => {
             ]
         },
         {
-            id: 2,
+            id: 3,
             name: 'CPM Ridesharing',
-            description: 'This project is a professional platform built with Angular, Sass, and TypeScript to streamline ridesharing collaboration and car rentals. By focusing on clean architecture and modern development practices, I achieved a fast, scalable interface that connects drivers with fleet opportunities. The use of TypeScript ensured code reliability, while Sass allowed for a polished, responsive design tailored for a seamless user experience.',
+            description: 'Designed, coded and deployed in 2023. This was one of my first major projects. Solving a real-world need for a car rental business catering to rideshare drivers. Built with Angular, Sass and TypeScript, the site was optimized for speed and accessibility from day one. Used Google Tag Manager to further understand the users. Even today it maintains an impressive 95+ performance rating on desktop and a strong 87% on mobile.',
             image: lionheart,
             githubLink: {
                 link: "https://github.com/andreialex232/cpm-ridesharing",
@@ -88,32 +120,13 @@ export const useProjects = () => {
                     name: 'Sass',
                     icon: scss
                 },
+                {
+                    name: 'Google Tag Manager',
+                    icon: gtm
+                },
             ]
         },
-        {
-            id: 3,
-            name: 'Aswik',
-            description: 'I built ASWIK as a personal project to practice connecting a backend to a database while creating a tool for my own Swedish studies. By using NodeJS and MongoDB, I successfully handled how data interacts between the server and the storage, allowing me to save and track my own word lists. I achieved a functional result where I can log my session history and customize how I practice grammar. It’s a straightforward JavaScript application that works as both a coding exercise in data management and a practical way to store and learn new vocabulary.',
-            image: lionheart,
-            githubLink: {
-                link: "https://github.com/andreialex232/aswik",
-                icon: reversedGit
-            },
-            technologies: [
-                {
-                    name: 'NodeJS',
-                    icon: node
-                },
-                {
-                    name: 'MongoDB',
-                    icon: mongo
-                },
-                {
-                    name: 'JavaScript',
-                    icon: js
-                },
-            ]
-        }
+        
     ])
     return {
         projects
