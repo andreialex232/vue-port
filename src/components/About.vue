@@ -1,12 +1,12 @@
 <script lang="ts" setup>
     import { ref, onMounted } from 'vue';
-    import { useAbout } from '@/composables/useAbout.ts';
     import gsap from 'gsap';
     import videoSource from "@/assets/videos/cv_optimized.mp4";
     import posterForVideo from "@/assets/images/poster_for_video_cv.png";
     import { fadeIn } from '@/utils/animations';
+    import { useI18n } from 'vue-i18n';
 
-    const { aboutText } = useAbout();
+    const { locale, tm } = useI18n()
     const videoWord = ref(null);
     const isVideoVisible = ref(false);
 
@@ -53,7 +53,8 @@
     }
     
     onMounted(() => {
-        initAboutCardsAnimation(aboutText.value);
+        const translatedData = tm('aboutText') as any[];
+        initAboutCardsAnimation(translatedData);
         fadeIn(".desktop-video-side", 'y');
 
         gsap.set(".video-section", {
@@ -73,12 +74,12 @@
 <template>
     <section aria-labelledby="mobile-heading" class="mt-10 mb-20 lg:hidden">
         <div class="flex justify-center items-center h-16 bg-secondary text-primary font-secondary">
-            <h2 id="mobile-heading" class="text-primary font-secondary text-2xl font-bold mb-4">Core & Context</h2>
+            <h2 id="mobile-heading" class="text-primary font-secondary text-2xl font-bold mb-4">{{ $t('coreHeading') }}</h2>
         </div>
         
         <div
-            v-for="(item, index) in aboutText"
-            :key="item.title"
+            v-for="(item, index) in $tm('aboutText')"
+            :key="index"
             :class="`mobile_card_${index} font-secondary grid grid-cols-1 gap-4 p-4`">
             <article class="bg-secondary text-primary rounded-xl border border-primary p-6 shadow-sm transition-hover hover:shadow-md">
                 <h3 class="text-xl font-bold ">{{ item.title }}</h3>
@@ -91,11 +92,11 @@
         <div class="flex-1 flex flex-col justify-center items-center">
             <div class="w-full max-w-2xl">
                 <header class="flex justify-center items-start h-16 bg-secondary text-primary font-secondary">
-                    <h2 id="desktop-heading" class="text-primary font-secondary text-4xl 2xl:text-5xl font-bold">Core & Context</h2>
+                    <h2 id="desktop-heading" class="text-primary font-secondary text-4xl 2xl:text-5xl font-bold">{{ $t('coreHeading') }}</h2>
                 </header>
                 
                 <div 
-                    v-for="(item, index) in aboutText"
+                    v-for="(item, index) in $tm('aboutText')"
                     :key="item.title"
                     :class="[`card_${index}`, 'font-secondary', 'grid', 'grid-cols-1', 'gap-4', 'p-4']">
                     <article class="bg-secondary text-primary rounded-xl border border-primary p-6 shadow-sm transition-hover hover:shadow-md">
@@ -110,24 +111,24 @@
     
     <div class="text-center w-fit">
         <div class="uppercase text-rest font-semibold lg:-translate-x-16 2xl:-translate-x-32 w-fit">
-            do you
+            {{ $t('videoPrompt.doYou') }}
         </div>
 
         <div class="text-restrest w-fit mx-auto">
-            prefer a
+            {{ $t('videoPrompt.prefer') }}
         </div>
 
         <div class="lg:pl-35 relative flex uppercase gap-3 text-rest font-semibold justify-center mt-4">
             <img loading="lazy" @click="handleGettingVideoCv" class="cursor-pointer lg:w-[60px] xl:w-[72px] bg-secondary z-100" src="../assets/svgs/video-player.svg" role="button" width="60" height="60" alt="" aria-hidden="true">
-            <p class="z-50 lg:text-5xl xl:text-rest" ref="videoWord">video</p>
+            <p class="z-50 lg:text-5xl xl:text-rest" ref="videoWord">{{ $t('videoPrompt.video') }}</p>
         </div>
 
         <div class="text-restrest mt-2 lg:translate-x-16 2xl:translate-x-32 w-fit ml-auto">
-            instead?
+            {{ $t('videoPrompt.instead') }}
         </div>
 
         <div class="mt-8">
-            <button @click="handleGettingVideoCv" :disabled="isVideoVisible" class="btn" aria-label="Yes please, show me the video version">Yes please</button>
+            <button @click="handleGettingVideoCv" :disabled="isVideoVisible" class="btn" aria-label="Yes please, show me the video version">{{ $t('videoPrompt.button') }}</button>
         </div>
     </div>
 

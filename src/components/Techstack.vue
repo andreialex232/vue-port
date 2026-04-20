@@ -9,7 +9,7 @@
 </script>
 <template>
     <div class="px-4 md:px-16 xl:px-24 mt-20 lg:mt-80 mb-6">
-        <h2 class="text-primary font-secondary pb-6 sm:pb-0 text-primary font-secondary text-2xl lg:text-4xl xl:text-5xl font-bold mb-4 text-center">My tech stack and learning path</h2>
+        <h2 class="text-primary font-secondary pb-6 sm:pb-0 text-primary font-secondary text-2xl lg:text-4xl xl:text-5xl font-bold mb-4 text-center">{{ $t('techPath.mainHeading') }}</h2>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 p-4 px-8 md:px-16 xl:px-24 font-secondary">
@@ -18,7 +18,7 @@
             <div class="flex-1 flex flex-col py-2">
                 
                 <div class="mb-6">
-                    <h3 class="text-2xl md:text-3xl lg:text-xl xl:text-2xl 2xl:text-2xl font-semibold">Technologies I use regularly</h3>
+                    <h3 class="text-2xl md:text-3xl lg:text-xl xl:text-2xl 2xl:text-2xl font-semibold">{{ $t('techPath.knownHeading') }}</h3>
                     <!-- <h4 class="text-md md:text-xl lg:text-lg 2xl:text-xl font-semibold mt-2 opacity-80"></h4> -->
                 </div>
 
@@ -42,7 +42,7 @@
             <div class="flex-1 flex flex-col py-2">
                 
                 <div class="mb-6">
-                    <h3 class="text-2xl md:text-3xl lg:text-xl xl:text-2xl 2xl:text-2xl font-semibold">Currently exploring and studying</h3>
+                    <h3 class="text-2xl md:text-3xl lg:text-xl xl:text-2xl 2xl:text-2xl font-semibold">{{ $t('techPath.learningHeading') }}</h3>
                     <!-- <h4 class="text-md md:text-xl lg:text-lg 2xl:text-xl font-semibold mt-2 opacity-80">Currently exploring and studying</h4> -->
                 </div>
 

@@ -3,29 +3,50 @@
     import gsap from "gsap";
     import { ScrollTrigger } from "gsap/ScrollTrigger";
     import TextPlugin from "gsap/TextPlugin";
-    import { ref, onMounted } from "vue";
+    import { ref, onMounted, watch } from "vue";
+    import { useI18n } from "vue-i18n";
 
     gsap.registerPlugin(TextPlugin, ScrollTrigger);
-    
-    const kindOfDev = ref(null);
 
-    onMounted(() => {
-        const devKindTl = gsap.timeline({ repeat: -1, repeatDelay: 1 })
-        .to(kindOfDev.value, { text: "Front End", ease: "none", duration: 1.2 })
+    const kindOfDev = ref(null);
+    let devKindTl: gsap.core.Timeline | null = null;
+    const { t, locale, tm } = useI18n()
+
+    const initAnimation = ():void => {
+        if(devKindTl) {
+            devKindTl.kill()
+            gsap.set(kindOfDev.value, {
+                text: ""
+            })
+        }
+
+        const roles = tm('hero.devRoles') as string[];
+
+        devKindTl = gsap.timeline({ repeat: -1, repeatDelay: 1 })
+        .to(kindOfDev.value, { text: roles[0], ease: "none", duration: 1.2 })
         .to({}, { duration: 2 })
         .to(kindOfDev.value, { duration: 0.8, text: "", ease: "power2.inOut" })
-        .to(kindOfDev.value, { duration: 1.2, text: "Creative", ease: "none" })
+        .to(kindOfDev.value, { duration: 1.2, text: roles[1], ease: "none" })
         .to({}, { duration: 2 })
         .to(kindOfDev.value, { duration: 0.8, text: "", ease: "power2.inOut" });
 
         ScrollTrigger.create({
             trigger: ".video-container",
             start: "top center",
-            onEnter: () => devKindTl.play(),
-            onEnterBack: () => devKindTl.play(),
-            onLeave: () => devKindTl.pause(),
-            onLeaveBack: () => devKindTl.pause()
+            onEnter: () => devKindTl?.play(),
+            onEnterBack: () => devKindTl?.play(),
+            onLeave: () => devKindTl?.pause(),
+            onLeaveBack: () => devKindTl?.pause(),
+            id: "heroTextTrigger"
         });
+    }
+
+    onMounted(() => {
+        initAnimation()
+    });
+
+    watch(locale, () => {
+        initAnimation()
     });
 </script>
 
@@ -56,16 +77,16 @@
                     ref="kindOfDev" 
                     aria-live="polite"
                     class="text-lg sm:text-restrest h-[1.2em] flex items-end leading-none"></div>
-                <p class="text-4xl italic sm:text-rest font-medium">Developer</p>
+                <p class="text-4xl italic sm:text-rest font-medium">{{ $t('hero.devSuffix') }}</p>
             </div>
 
             <div class="mt-20 md:mt-0 flex flex-col text-xl sm:text-2xl md:text-3xl row-start-4 md:row-start-3 col-start-5 md:col-start-6 col-span-7 lg:col-start-8 lg:col-span-3 items-end self-center">
-                <p class="text-lg sm:text-restrest">...based in</p>
-                <address class="not-italic text-4xl italic text-dan sm:text-rest font-medium">Denmark</address>
+                <p class="text-lg sm:text-restrest">{{ $t('hero.locationPrefix') }}</p>
+                <address class="not-italic text-4xl italic text-dan sm:text-rest font-medium">{{ $t('hero.locationName') }}</address>
             </div>
 
             <p class="text-base md:text-xl pt-10 font-secondary row-start-6 md:row-start-4 text-center col-span-12 self-end md:self-auto">
-                Open to opportunities
+                {{ $t('hero.status') }}
             </p>
         </section>
     </header>

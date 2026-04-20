@@ -4,7 +4,7 @@
     import { useEmail } from '@/composables/useEmail';
     import { enterContactModalAnim, leaveContactModalAnim } from '@/utils/animations';
 
-    const { validateForm, formFeedback, sendEmail, emailFeedbackMessage, formData, sendButtonText, errors } = useEmail()
+    const { validateForm, formFeedback, sendEmail, emailFeedbackMessage, formData, errors } = useEmail()
     const { contactMethods } = useContact()
     const showModal = ref(false)
     const isSuccess = computed(() => emailFeedbackMessage.value?.toLowerCase().includes('success'));
@@ -35,10 +35,11 @@
     <div class="col-start-2 col-end-12 sm:col-start-2 sm:col-end-6 flex flex-col justify-between">
         <div>
             <h2 id="contact-heading" class="text-5xl lg:text-rest 2xl:text-nume font-secondary font-semibold leading-none">
-                Let's <span class="inline sm:block">Connect</span>
+                <!-- Let's <span class="inline sm:block">Connect</span> -->
+                 {{ $t('contact.heading') }}
             </h2>
             <p class="hidden md:block text-base lg:text-xl md:text-base xl:text-2xl 2xl:text-restrest font-secondary mt-1">
-                I'd be delighted to hear from you!
+                {{ $t('contact.subheading') }}
             </p>
         </div>
 
@@ -78,18 +79,18 @@
     <section aria-label="Contact Form" class="mt-12 sm:mt-0 col-start-2 col-end-12 sm:col-start-7 sm:col-end-12 xl:col-start-7 xl:col-end-12">
         <form @submit.prevent="handleSendEmail" ref="form" novalidate class="w-full h-full flex flex-col justify-between space-y-4">
             <div class="font-medium w-full field">
-                <label class="block w-full mb-1" for="name">Name<span v-if="errors.name" class="text-red-500"> {{ errors.name }}</span></label>
-                <input v-model="formData.name" class="rounded-lg input-custom w-full" placeholder="Your full name" type="text" id="name" name="name">
+                <label class="block w-full mb-1" for="name">{{ $t('contact.form.labels.name') }}<span v-if="errors.name" class="text-red-500"> &nbsp;-&nbsp; {{ $t('contact.form.validation.nameRequired') }}</span></label>
+                <input v-model="formData.name" class="rounded-lg input-custom w-full" :placeholder="$t('contact.form.placeholders.name')" type="text" id="name" name="name">
             </div>
 
             <div class="font-medium field">
-                <label class="block w-full mb-1" for="email">Email<span v-if="errors.email" class="text-red-500"> {{ errors.email }}</span></label>
-                <input v-model="formData.email" class="rounded-lg input-custom w-full" type="email" id="email" name="email" placeholder="your@email.com">
+                <label class="block w-full mb-1" for="email">{{ $t('contact.form.labels.email') }}<span v-if="errors.email" class="text-red-500"> &nbsp;-&nbsp; {{ $t('contact.form.validation.emailRequired') }}</span></label>
+                <input v-model="formData.email" class="rounded-lg input-custom w-full" type="email" id="email" name="email" :placeholder="$t('contact.form.placeholders.email')">
             </div>
 
             <div class="font-medium field flex-grow flex flex-col">
-                <label class="block w-full mb-1" for="message">Message <span v-if="errors.message" class="text-red-500"> {{ errors.message }}</span></label>
-                <textarea v-model="formData.message" class="rounded-lg input-custom w-full flex-grow" id="message" name="message" rows="3" placeholder="How can I help?"></textarea>
+                <label class="block w-full mb-1" for="message">{{ $t('contact.form.labels.message') }}<span v-if="errors.message" class="text-red-500"> &nbsp;-&nbsp; {{ $t('contact.form.validation.messageRequired') }}</span></label>
+                <textarea v-model="formData.message" class="rounded-lg input-custom w-full flex-grow" id="message" name="message" rows="3" :placeholder="$t('contact.form.placeholders.message')"></textarea>
             </div>
 
             <!-- <p v-if="emailFeedbackMessage" 
@@ -98,7 +99,7 @@
                 {{ emailFeedbackMessage }}
             </p> -->
 
-            <button :disabled="sendButtonText === 'Sending...'" class="btn w-full sm:w-auto mt-2" type="submit">{{ sendButtonText }}</button>
+            <button :disabled="isSuccess" class="btn w-full sm:w-auto mt-2" type="submit">{{ isSuccess ? $t('contact.form.button.sending') : $t('contact.form.button.default') }}</button>
             
 
             <Transition 
@@ -127,7 +128,7 @@
                         class="font-primary font-medium text-sm lg:text-base"
                         :class="isSuccess ? 'text-green-500' : 'text-red-500'"
                     >
-                        {{ emailFeedbackMessage }}
+                        {{ isSuccess ? $t('contact.form.feedback.success') : $t('contact.form.feedback.error') }}
                     </p>
                     </div>
                 </div>
