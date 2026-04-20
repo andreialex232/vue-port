@@ -4,7 +4,6 @@ emailjs.init("K__ZfCzMebqB3btfN");
 
 export function useEmail() {
     const emailFeedbackMessage = ref<null | string>(null);
-    const sendButtonText = ref<string>('Send Message');
 
     const formData = reactive({
         name: '',
@@ -41,19 +40,15 @@ export function useEmail() {
 
     const formFeedback = (state:string) => {
         if(state === 'try') {
-            sendButtonText.value = 'Sending...'
             emailFeedbackMessage.value = null;
         }
         if(state === 'sent') {
             emailFeedbackMessage.value = 'Message sent successfully!'
-            sendButtonText.value = 'Message sent!';
         }
         if(state === 'error') {
             emailFeedbackMessage.value = 'Failed to send message. Please try again later';
-            sendButtonText.value = "Send Message"
         }
-        if(state === 'reset') {
-            sendButtonText.value = "Send message";
+        if(state === 'reset') {;
             emailFeedbackMessage.value = null;
         }
     }
@@ -77,6 +72,6 @@ export function useEmail() {
         })
     }
 
-    return { validateForm, formFeedback, sendEmail, emailFeedbackMessage, formData, sendButtonText, errors }
+    return { validateForm, formFeedback, sendEmail, emailFeedbackMessage, formData, errors }
 }
 

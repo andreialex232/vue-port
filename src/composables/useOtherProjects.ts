@@ -20,7 +20,7 @@ export const useOtherProjects = () => {
                     name: "Adobe Illustrator",
                     icon: adobe_ai
                 },
-                description: "Infographic poster designed to raise awareness regarding the rise of police brutality in the U.S despire years of calls for reform. It combines statistical data, specific case studies, and policy analysis to argue that systemic failures are preventing progress"
+                description: "This infographic poster shows the persistent rise of police brutality in the U.S. despite decades of reform efforts. By synthesizing statistical data, high-profile case studies, and policy analysis, the design illustrates with proof how systemic failures often undermine legislative change."
             },
             {
                 id: "p2",
@@ -59,7 +59,7 @@ export const useOtherProjects = () => {
             {
                 id: "a1",
                 name: "Rocket To Moon Animation",
-                description: "Animation created for my video cv which was also required in a school project. the animation was created using adobe after effects and adobe illustrator. the purpose is to showcase my skills in motion graphics and video editing, as well as to create a visually engaging section in my video cv",
+                description: "This animation serves as a high energy segment of my Video CV, built with Adobe After Effects and Illustrator. While this project showcases my professional motion skills, my foundation in editing runs much deeper. I've been editing videos and funny moments for over 10 years, transforming a long-term hobby into an instinct for timing, pacing and visual storytelling.",
                 source: rocket_anim,
                 technology: [{
                     name: "Adobe After Effects",
