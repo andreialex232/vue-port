@@ -1,0 +1,123 @@
+{
+  "contact": {
+    "heading": "Lad os skabe kontakt",
+    "subheading": "Jeg er altid åben for nye projekter og kreative samarbejder.",
+    "form": {
+      "labels": {
+        "name": "Navn",
+        "email": "E-mail",
+        "message": "Besked"
+      },
+      "placeholders": {
+        "name": "Dit fulde navn",
+        "email": "Din{'@'}email.com",
+        "message": "Hvordan kan jeg hjælpe?"
+      },
+      "button": {
+        "default": "Send besked",
+        "sending": "Sender..."
+      },
+      "validation": {
+        "nameRequired": "skal udfyldes",
+        "emailRequired": "skal udfyldes",
+        "emailInvalid": "er ugyldig",
+        "messageRequired": "skal udfyldes"
+      },
+      "feedback": {
+        "success": "Beskeden er sendt!",
+        "error": "Noget gik galt. Prøv venligst igen."
+      }
+    }
+  },
+  "techPath": {
+    "mainHeading": "Min tech stack og læringsvej",
+    "knownHeading": "Teknologier jeg bruger regelmæssigt",
+    "learningHeading": "Hvad jeg udforsker og studerer lige nu"
+  },
+  "otherProjects": {
+    "labels": {
+      "techUsed": "Anvendt teknologi:"
+    },
+    "posters": [
+      {
+        "name": "Oplysningsplakat om politivold",
+        "subheading": "Det dødbringende mønster",
+        "description": "Denne infografik-plakat viser den vedvarende stigning i politivold i USA på trods af årtiers reformbestræbelser. Ved at sammenstille statistiske data, profilerede casestudier og politisk analyse, illustrerer designet med beviser, hvordan systemiske svigt ofte undergraver lovgivningsmæssige ændringer."
+      },
+      {
+        "name": "Plakat 2",
+        "subheading": "Visuelt koncept",
+        "description": "Et dyk ned i grafiske designprincipper ved hjælp af moderne værktøjer."
+      }
+    ],
+    "animations": [
+      {
+        "name": "Raket til månen animation",
+        "description": "Denne animation fungerer som et energisk segment af mit Video-CV, skabt med Adobe After Effects og Illustrator. Selvom dette projekt viser mine professionelle evner inden for motion design, stikker mit fundament i redigering meget dybere. Jeg har redigeret videoer og 'funny moments' i over 10 år, hvilket har forvandlet en mangeårig hobby til et instinkt for timing, tempo og visuel historiefortælling."
+      }
+    ],
+    "wordpress": [
+      {
+        "name": "WordPress CMS Projekt",
+        "description": "Bygget som en del af et kollaborativt team-sprint. Dette projekt fungerede som et dyk ned i både Agile metoder og WordPress-kerneudvikling. Vi udviklede et speciallavet tema ved hjælp af PHP til at håndtere logik gennem custom post types og advanced custom fields."
+      }
+    ]
+  },
+  "projects": {
+    "heading": "Hvad jeg har bygget",
+    "labels": {
+      "teamMembers": "Teammedlemmer:",
+      "techUsed": "Anvendte teknologier:",
+      "seeFinal": "Se det færdige projekt:"
+    },
+    "list": [
+      {
+        "name": "Online Portefølje",
+        "description": "Dette site er et direkte indblik i min udviklingsfilosofi. Udover brugerfladen brugte jeg dette projekt til at mestre synergien mellem Vue og GSAP. Jeg fokuserede kraftigt på den arkitektoniske sundhed ved at integrere i18n og refaktorere tunge komponenter fra 130+ linjer ned til 30. Jeg sikrede, at kildekoden forblev let og vedligeholdelsesvenlig. For at fuldende oplevelsen implementerede jeg Vite SSG og Unhead for optimeret SEO og hurtig indlæsning, hvilket resulterede i et site, der er både skalérbart og performant."
+      },
+      {
+        "name": "Brødrene Løvehjerte",
+        "description": "I mit første samarbejdsprojekt skabte vores gruppe en digital oplevelse for Brødrene Løvehjerte. Vi leverede et højtydende interaktivt site, der opnåede en B-rating for bæredygtighed (Carbon Rating) og exceptionelle Lighthouse-scores: 99 i performance, 96 i tilgængelighed og 100 i både Best Practices og SEO. Det var en masterclass i teamwork og teknisk udførelse ved hjælp af HTML, CSS og JS."
+      },
+      {
+        "name": "CPM Ridesharing",
+        "description": "Designet, kodet og lanceret i 2023. Dette var et af mine første store projekter, som løste et reelt behov for en biludlejningsvirksomhed, der betjener rideshare-chauffører. Bygget med Angular, Sass og TypeScript, blev sitet optimeret til hastighed og tilgængelighed fra dag ét. Jeg brugte Google Tag Manager for bedre at forstå brugerne. Selv i dag opretholder det en imponerende performance-rating på 95+ på desktop og stærke 87% på mobil."
+      }
+    ]
+  },
+  "hero": {
+    "devRoles": [
+      "Front End",
+      "Kreativ"
+    ],
+    "devSuffix": "Udvikler",
+    "locationPrefix": "...baseret i",
+    "locationName": "Danmark",
+    "status": "Åben for muligheder"
+  },
+  "nav": {
+    "languageLabel": "Sprog"
+  },
+  "coreHeading": "Kerne & Kontekst",
+  "aboutText": [
+    {
+      "title": "Rejsen",
+      "description": "Oprindeligt fra Rumænien, bor og studerer jeg nu i Danmark. En af grundene til, at jeg valgte at flytte hertil, var min beundring for Skandinavien – ikke kun kulturen og sproget, men hvordan teknologi og samfund er bygget på effektivitet og høje standarder. Jeg ønskede at fordybe mig i et miljø, der værdsætter kvalitet og logik, og jeg har brugt min tid her på at tilpasse min tekniske tilgang til at matche de forventninger."
+    },
+    {
+      "title": "Lige nu...",
+      "description": "Jeg er i gang med min uddannelse i Multimediedesign og ser frem mod mit 4. semester. Jeg søger en praktikplads med start i januar 2027, men jeg er også interesseret i at finde et relevant studierelevant job inden da. Selvom dette studie dækker mange forskellige områder, har jeg indset, at jeg er langt mere tiltrukket af den tekniske side frem for blot at gøre ting pæne."
+    },
+    {
+      "title": "Målet...",
+      "description": "Er at tage top-up uddannelsen i Webudvikling efter Multimediedesign for at blive full-stack udvikler, og jeg vil endda gerne snuse til DevOps på et tidspunkt for at se, hvordan infrastrukturen og deployment-siden af tingene fungerer."
+    }
+  ],
+  "videoPrompt": {
+    "doYou": "vil du",
+    "prefer": "hellere se en",
+    "video": "video",
+    "instead": "i stedet?",
+    "button": "Ja tak"
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "contact": {
+    "heading": "Let's Connect",
+    "subheading": "I'm always open to new projects and creative collaborations.",
+    "form": {
+      "labels": {
+        "name": "Name",
+        "email": "Email",
+        "message": "Message"
+      },
+      "placeholders": {
+        "name": "Your full name",
+        "email": "Your{'@'}email.com",
+        "message": "How can I help?"
+      },
+      "button": {
+        "default": "Send Message",
+        "sending": "Sending..."
+      },
+      "validation": {
+        "nameRequired": "is required",
+        "emailRequired": "is required",
+        "emailInvalid": "is invalid",
+        "messageRequired": "is required"
+      },
+      "feedback": {
+        "success": "Message sent successfully!",
+        "error": "Something went wrong. Please try again."
+      }
+    }
+  },
+  "techPath": {
+    "mainHeading": "My tech stack and learning path",
+    "knownHeading": "Technologies I use regularly",
+    "learningHeading": "Currently exploring and studying"
+  },
+  "otherProjects": {
+    "labels": {
+      "techUsed": "Technology used:"
+    },
+    "posters": [
+      {
+        "name": "Police Brutality Awareness Poster",
+        "subheading": "The Deadly Pattern",
+        "description": "This infographic poster shows the persistent rise of police brutality in the U.S. despite decades of reform efforts. By synthesizing statistical data, high-profile case studies, and policy analysis, the design illustrates with proof how systemic failures often undermine legislative change."
+      },
+      {
+        "name": "Poster 2",
+        "subheading": "Visual Concept",
+        "description": "A deep dive into graphic design principles using modern tools."
+      }
+    ],
+    "animations": [
+      {
+        "name": "Rocket To Moon Animation",
+        "description": "This animation serves as a high energy segment of my Video CV, built with Adobe After Effects and Illustrator. While this project showcases my professional motion skills, my foundation in editing runs much deeper. I've been editing videos and funny moments for over 10 years, transforming a long-term hobby into an instinct for timing, pacing and visual storytelling."
+      }
+    ],
+    "wordpress": [
+      {
+        "name": "WordPress CMS Project",
+        "description": "Built as part of collaborative team sprint, this project served as a deep dive into both Agile methodologies and WordPress core development. We developed a custom theme utilizing PHP to handle logic through custom post types and advanced custom fields."
+      }
+    ]
+  },
+
+  "projects": {
+    "heading": "What I've Been Building",
+    "labels": {
+      "teamMembers": "Team members:",
+      "techUsed": "Technologies used:",
+      "seeFinal": "See Final Project:"
+    },
+    "list": [
+      {
+        "name": "Online Portfolio",
+        "description": "This site is a live look at my development philosophy. Beyond the UI, I used this project to master the synergy between Vue and GSAP. I focused heavily on the architectural health by integrating i18n and refactoring bloated components from 130+ lines down to 30. I ensured the codebase stayed lean and maintanable. To round out the experience, I implemented Vite SSG and Unhead for optimized SEO and a fast initial load, resulting in a site that is as scalable as it is performant."
+      },
+      {
+        "name": "The Brothers Lionheart",
+        "description": "For my first collaborative project, our group created a digital experience for The Brothers Lionheart. We delivered a high-performance interactive site that earned a B-rating for sustainability (Carbon Rating) and exceptional Lighthouse scores: 99 performance, 96 accessibility and 100 in both Best Practices and SEO. It was a masterclass in teamwork and technical exewcution using HTML, CSS and JS."
+      },
+      {
+        "name": "CPM Ridesharing",
+        "description": "Designed, coded and deployed in 2023. This was one of my first major projects. Solving a real-world need for a car rental business catering to rideshare drivers. Built with Angular, Sass and TypeScript, the site was optimized for speed and accessibility from day one. Used Google Tag Manager to further understand the users. Even today it maintains an impressive 95+ performance rating on desktop and a strong 87% on mobile."
+      }
+    ]
+  },
+  "hero": {
+  "devRoles": ["Front End", "Creative"],
+  "devSuffix": "Developer",
+  "locationPrefix": "...based in",
+  "locationName": "Denmark",
+  "status": "Open to opportunities"
+  },
+  "nav": {
+    "languageLabel": "Language"
+  },
+  "coreHeading": "Core & Context",
+  "aboutText": [
+    {
+      "title": "The Journey",
+      "description": "Originally from Romania, I now live and study in Denmark. One of the reasons I chose to move here was my admiration for Scandinavia but not just the culture and the language, but how technology and society are built on efficiency and high standards. I wanted to immerse myself in an environment that values quality and logic, and I've spent my time here adapting my technical approach to match those expectations."
+    },
+    {
+      "title": "Right now...",
+      "description": "I'm doing my degree in Multimedia Design and looking ahead to my 4th semester. I'm searching for an internship starting in January 2027, but I'm also interested in finding a part-time student job in the field before then. Even though this study cover a lot of different areas, I've realized I'm much more drawn to the technical side of things rather than just making things pretty."
+    },
+    {
+      "title": "The Goal...",
+      "description": "Is to take the Web Development top-up after Multimedia Design to become a full-stack developer, and I'd even like to dabble in DevOps at some point to see how the infrastructure and deployment side of things work."
+    }
+  ],
+  "videoPrompt": {
+    "doYou": "do you",
+    "prefer": "prefer a",
+    "video": "video",
+    "instead": "instead?",
+    "button": "Yes please"
+  }
+}
