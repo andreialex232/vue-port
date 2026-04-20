@@ -1,0 +1,120 @@
+{
+  "contact": {
+    "heading": "Låt oss höras",
+    "subheading": "Jag är alltid öppen för nya projekt och kreativa samarbeten.",
+    "form": {
+      "labels": {
+        "name": "Namn",
+        "email": "E-post",
+        "message": "Meddelande"
+      },
+      "placeholders": {
+        "name": "Ditt fullständiga namn",
+        "email": "Din{'@'}email.com",
+        "message": "Hur kan jag hjälpa till?"
+      },
+      "button": {
+        "default": "Skicka meddelande",
+        "sending": "Skickar..."
+      },
+      "validation": {
+        "nameRequired": "måste fyllas i",
+        "emailRequired": "måste fyllas i",
+        "emailInvalid": "är ogiltig",
+        "messageRequired": "måste fyllas i"
+      },
+      "feedback": {
+        "success": "Meddelandet har skickats!",
+        "error": "Något gick fel. Försök igen."
+      }
+    }
+  },
+  "techPath": {
+    "mainHeading": "Min tech-stack och lärandeväg",
+    "knownHeading": "Tekniker jag använder regelbundet",
+    "learningHeading": "Vad jag utforskar och studerar just nu"
+  },
+  "otherProjects": {
+    "labels": {
+      "techUsed": "Teknik som använts:"
+    },
+    "posters": [
+      {
+        "name": "Affisch om polisvåld",
+        "subheading": "Det dödliga mönstret",
+        "description": "Denna infografiska affisch visar den ihållande ökningen av polisvåld i USA trots årtionden av reformförsök. Genom att sammanställa statistiska data, uppmärksammade fallstudier och politisk analys illustrerar designen med bevis hur systemfel ofta undergräver lagändringar."
+      },
+      {
+        "name": "Affisch 2",
+        "subheading": "Visuellt koncept",
+        "description": "En djupdykning i grafiska designprinciper med moderna verktyg."
+      }
+    ],
+    "animations": [
+      {
+        "name": "Raket till månen-animation",
+        "description": "Denna animation fungerar som ett fartfyllt segment av mitt Video-CV, skapat med Adobe After Effects och Illustrator. Även om detta projekt visar mina professionella kunskaper inom motion design, stannar min grund inom redigering mycket djupare. Jag har redigerat videor och 'funny moments' i över 10 år, vilket har förvandlat en långvarig hobby till en instinkt för timing, tempo och visuellt berättande."
+      }
+    ],
+    "wordpress": [
+      {
+        "name": "WordPress CMS-projekt",
+        "description": "Byggt som en del av en kollaborativ team-sprint. Detta projekt fungerade som en djupdykning i både Agile-metodik och WordPress-kärnutveckling. Vi utvecklade ett anpassat tema med PHP för att hantera logik genom custom post types och advanced custom fields."
+      }
+    ]
+  },
+  "projects": {
+    "heading": "Vad jag har byggt",
+    "labels": {
+      "teamMembers": "Teammedlemmar:",
+      "techUsed": "Tekniker som använts:",
+      "seeFinal": "Se färdigt projekt:"
+    },
+    "list": [
+      {
+        "name": "Online-portfolio",
+        "description": "Den här webbplatsen är en direkt spegling av min utvecklingsfilosofi. Utöver användargränssnittet använde jag projektet för att bemästra energin mellan Vue och GSAP. Jag fokuserade hårt på den arkitektoniska hälsan genom att integrera i18n och refaktorera tunga komponenter från 130+ rader ner till 30. Jag såg till att källkoden förblev lätt och underhållsvänlig. För att runda av upplevelsen implementerade jag Vite SSG och Unhead för optimerad SEO och snabb laddning, vilket resulterade i en sajt som är lika skalbar som den är performant."
+      },
+      {
+        "name": "Bröderna Lejonhjärta",
+        "description": "I mitt första samarbetsprojekt skapade vår grupp en digital upplevelse för Bröderna Lejonhjärta. Vi levererade en högpresterande interaktiv sajt som fick ett B-betyg för hållbarhet (Carbon Rating) och exceptionella Lighthouse-poäng: 99 i prestanda, 96 i tillgänglighet och 100 i både Best Practices och SEO. Det var en masterclass i teamwork och tekniskt utförande med HTML, CSS och JS."
+      },
+      {
+        "name": "CPM Ridesharing",
+        "description": "Designad, kodad och driftsatt 2023. Detta var ett av mina första stora projekt som löste ett verkligt behov för ett biluthyrningsföretag riktat till rideshare-förare. Byggd med Angular, Sass och TypeScript, optimerades sajten för snabbhet och tillgänglighet från dag ett. Använde Google Tag Manager för att bättre förstå användarna. Även idag håller den en imponerande prestanda på 95+ på desktop och starka 87% på mobilen."
+      }
+    ]
+  },
+  "hero": {
+    "devRoles": ["Front End", "Kreativ"],
+    "devSuffix": "Utvecklare",
+    "locationPrefix": "...baserad i",
+    "locationName": "Danmark",
+    "status": "Öppen för möjligheter"
+  },
+  "nav": {
+    "languageLabel": "Språk"
+  },
+  "coreHeading": "Kärna & Kontext",
+  "aboutText": [
+    {
+      "title": "Resan",
+      "description": "Ursprungligen från Rumänien, men bor och studerar nu i Danmark. En av anledningarna till att jag valde att flytta hit var min beundran för Skandinavien – inte bara kulturen och språket, utan hur teknologi och samhälle är byggt på effektivitet och höga standarder. Jag ville fördjupa mig i en miljö som värdesätter kvalitet och logik, och jag har ägnat min tid här åt att anpassa mitt tekniska tillvägagångssätt för att matcha de förväntningarna."
+    },
+    {
+      "title": "Just nu...",
+      "description": "Jag läser min examen i Multimediedesign och blickar framåt mot min fjärde termin. Jag letar efter en praktikplats med start i januari 2027, men jag är också intresserad av att hitta ett extrajobb inom branschen innan dess. Även om studierna täcker många olika områden har jag insett att jag dras mycket mer till den tekniska sidan än att bara göra saker snygga."
+    },
+    {
+      "title": "Målet...",
+      "description": "Är att ta en kandidatexamen (top-up) i Webbutveckling efter Multimediedesign för att bli en fullstack-utvecklare, och jag skulle även vilja nosa på DevOps någon gång för att se hur infrastrukturen och driftsättningssidan fungerar."
+    }
+  ],
+  "videoPrompt": {
+    "doYou": "vill du",
+    "prefer": "hellre se en",
+    "video": "video",
+    "instead": "istället?",
+    "button": "Ja tack"
+  }
+}
