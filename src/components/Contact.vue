@@ -1,8 +1,9 @@
 <script setup lang="ts">
     import { useContact } from '@/composables/useContact.ts';
-    import { ref, computed } from 'vue';
+    import { ref, computed, onMounted } from 'vue';
     import { useEmail } from '@/composables/useEmail';
     import { enterContactModalAnim, leaveContactModalAnim } from '@/utils/animations';
+    import { fadeIn } from '@/utils/animations';
 
     const { validateForm, formFeedback, sendEmail, emailFeedbackMessage, formData, errors, isSending } = useEmail()
     const { contactMethods } = useContact()
@@ -21,16 +22,16 @@
         sendEmail(triggerModal)
     }
 
-/*     onMounted(() => {
+    onMounted(() => {
+        fadeIn('.contact-main', 'y')
+    /* console.log("EmailJS is loaded:", !!emailjs); */
         
-    console.log("EmailJS is loaded:", !!emailjs);
-        
-    }) */
+    })
 
     
 </script>
 <template>
-<section aria-labelledby="contact-heading" class="lg:mt-60 mb-30 gsap_contact pt-20 pb-20 lg:pt-24 lg:pb-24 bg-secondary text-primary w-dvw font-secondary grid grid-cols-12 items-stretch">
+<section aria-labelledby="contact-heading" class="contact-main lg:mt-60 mb-30 gsap_contact pt-20 pb-20 lg:pt-24 lg:pb-24 bg-secondary text-primary w-dvw font-secondary grid grid-cols-12 items-stretch">
     
     <div class="col-start-2 col-end-12 sm:col-start-2 sm:col-end-6 flex flex-col justify-between">
         <div>
