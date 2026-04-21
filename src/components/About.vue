@@ -140,11 +140,10 @@
             <h3 class="lg:text-2xl text-2xl font-bold pb-4 self-start">Let's Discuss the Logic: A Portfolio Introduction</h3>
             <video
                 :poster="posterForVideo"
-                class="object-cover w-full h-auto shadow-2xl rounded-xl border border-primary/20"
+                class="object-cover select-none w-full h-auto shadow-2xl rounded-xl border border-primary/20"
                 playsinline="true"
                 preload="none"
                 type="video/mp4"
-                controls 
                 :src="isMobile ? videoSourceMobile : videoSourceDesktop">
                 Your browser does not support the video.
             </video>

@@ -58,7 +58,7 @@
     <header class="video-container tracking-tighter relative h-dvh w-full overflow-hidden">
         <video
             fetchpriority="high"
-            class="absolute -z-10 w-full h-full object-cover pointer-events-none" 
+            class="absolute -z-10 w-full h-full object-cover pointer-events-none select-none" 
             :src="isMobile ? videoSourceMobile : videoSourceDesktop"
             playsinline autoplay loop muted preload="auto"
             aria-hidden="true"

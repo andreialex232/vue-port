@@ -112,7 +112,7 @@
                         <video
                             loading="lazy" muted autoplay loop playsinline
                             :src="anim.sourceMobile" 
-                            class="w-full h-auto object-cover"
+                            class="select-none w-full h-auto object-cover"
                         ></video>
                     </div>
                     
@@ -137,7 +137,7 @@
                     loading="lazy" muted autoplay loop playsinline
                     :src="anim.sourceDesktop" 
                     :alt="anim.name" 
-                    class="w-full h-auto lg:h-[380px] object-contain transition-transform duration-300"
+                    class="select-none w-full h-auto lg:h-[380px] object-contain transition-transform duration-300"
                 ></video>
             </div>
         </article>
