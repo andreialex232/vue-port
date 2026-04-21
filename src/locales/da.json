@@ -1,4 +1,13 @@
 {
+  "meta": {
+    "title": "Alex Andrei Vătui {'|'} Frontend Udvikler",
+    "description": "Specialiseret i Vue, GSAP og Tailwind CSS til at bygge højtydende, animerede weboplevelser. Er i gang med at udvide til Full-stack udvikling med .NET, Node.js og MongoDB.",
+    "ogTitle": "Alex Vătui Webudvikler Portefølje",
+    "ogDescription": "Udforsk en portefølje bygget med Vue, GSAP og moderne CSS. Se hvordan jeg kombinerer kreativt design (Adobe CC/Figma) med teknisk ekspertise i JavaScript.",
+    "ogImageAlt": "En fremvisning af webprojekter med Vue, GSAP-animationer og moderne frontend-arkitektur.",
+    "twitterTitle": "Alex Vătui Webudvikler Portefølje",
+    "twitterDescription": "Skaber elegante digitale løsninger ved hjælp af Vue, GSAP og Tailwind. Udforsker lige nu styrken i .NET og TypeScript."
+  },
   "contact": {
     "heading": "Lad os skabe kontakt",
     "subheading": "Jeg er altid åben for nye projekter og kreative samarbejder.",
