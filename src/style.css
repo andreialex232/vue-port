@@ -5,6 +5,7 @@
 @theme {
     --color-primary: #2F2F2F;
     --color-secondary: #E8E8DE;
+    --color-not-safari: #141414;
     --color-dan: #A85C5C;
     --color-swe: #5A7FA8;
     --color-input-border: #c9c9bf;
@@ -21,6 +22,7 @@
 }
 
 .cursor::after {
+    /* color: #141414 */
   content: "_";
   animation: blink 1s step-end infinite;
 }

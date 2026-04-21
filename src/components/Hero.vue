@@ -7,7 +7,9 @@
     import { ref, onMounted, watch } from "vue";
     import { useI18n } from "vue-i18n";
     import { useCheckScreen } from "@/utils/screen_check";
+    import { useUserAgent } from "@/utils/browser_check";
 
+    const { isSafari } = useUserAgent();
     const { isMobile } = useCheckScreen();
 
     gsap.registerPlugin(TextPlugin, ScrollTrigger);
@@ -57,6 +59,7 @@
 <template>
     <header class="video-container tracking-tighter relative h-dvh w-full overflow-hidden">
         <video
+            v-if="!isSafari"
             fetchpriority="high"
             class="absolute -z-10 w-full h-full object-cover pointer-events-none select-none" 
             :src="isMobile ? videoSourceMobile : videoSourceDesktop"
@@ -64,6 +67,7 @@
             aria-hidden="true"
             title="Background atmospheric video">
         </video>
+        <div v-else class="bg-not-safari absolute -z-10 w-full h-full object-cover pointer-events-none select-none"></div>
 
         <section class="font-primary py-12 md:py-20 grid h-full w-full grid-cols-12 grid-rows-6 md:grid-rows-4 px-6 md:px-12">
             
