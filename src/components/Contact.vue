@@ -4,7 +4,7 @@
     import { useEmail } from '@/composables/useEmail';
     import { enterContactModalAnim, leaveContactModalAnim } from '@/utils/animations';
 
-    const { validateForm, formFeedback, sendEmail, emailFeedbackMessage, formData, errors } = useEmail()
+    const { validateForm, formFeedback, sendEmail, emailFeedbackMessage, formData, errors, isSending } = useEmail()
     const { contactMethods } = useContact()
     const showModal = ref(false)
     const isSuccess = computed(() => emailFeedbackMessage.value?.toLowerCase().includes('success'));
@@ -99,7 +99,7 @@
                 {{ emailFeedbackMessage }}
             </p> -->
 
-            <button :disabled="isSuccess" class="btn w-full sm:w-auto mt-2" type="submit">{{ isSuccess ? $t('contact.form.button.sending') : $t('contact.form.button.default') }}</button>
+            <button :disabled="isSuccess" class="btn w-full sm:w-auto mt-2" type="submit">{{ isSending ? $t('contact.form.button.sending') : $t('contact.form.button.default') }}</button>
             
 
             <Transition 

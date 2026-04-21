@@ -4,6 +4,7 @@ emailjs.init("K__ZfCzMebqB3btfN");
 
 export function useEmail() {
     const emailFeedbackMessage = ref<null | string>(null);
+    const isSending = ref(false);
 
     const formData = reactive({
         name: '',
@@ -54,6 +55,7 @@ export function useEmail() {
     }
 
     function sendEmail (modalLogic: () => void):void {
+        isSending.value = true;
         emailjs.send("service_ivwnctv", "template_lkbdd0h", {
             name: formData.name,
             email: formData.email,
@@ -65,6 +67,7 @@ export function useEmail() {
             setTimeout(() => {
                 formFeedback('reset')
             }, 3000);
+            isSending.value = false;
         }).catch((error) => {
             modalLogic();
             console.error('Email Error', error);
@@ -72,6 +75,6 @@ export function useEmail() {
         })
     }
 
-    return { validateForm, formFeedback, sendEmail, emailFeedbackMessage, formData, errors }
+    return { validateForm, formFeedback, sendEmail, emailFeedbackMessage, formData, errors, isSending }
 }
 
