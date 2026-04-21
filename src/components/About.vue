@@ -1,11 +1,14 @@
 <script lang="ts" setup>
     import { ref, onMounted } from 'vue';
     import gsap from 'gsap';
-    import videoSource from "@/assets/videos/cv_optimized.mp4";
-    import posterForVideo from "@/assets/images/poster_for_video_cv.png";
+    import videoSourceMobile from "@/assets/videos/cv_mobile.mp4";
+    import videoSourceDesktop from "@/assets/videos/cv_desktop.mp4";
+    import posterForVideo from "@/assets/images/poster_for_video_cv.webp";
     import { fadeIn } from '@/utils/animations';
     import { useI18n } from 'vue-i18n';
+    import { useCheckScreen } from '@/utils/screen_check';
 
+    const { isMobile } = useCheckScreen();
     const { locale, tm } = useI18n()
     const videoWord = ref(null);
     const isVideoVisible = ref(false);
@@ -142,8 +145,8 @@
                 preload="none"
                 type="video/mp4"
                 controls 
-                :src="videoSource">
-                Your browser does not support the video tag.
+                :src="isMobile ? videoSourceMobile : videoSourceDesktop">
+                Your browser does not support the video.
             </video>
         </div>
     </section>

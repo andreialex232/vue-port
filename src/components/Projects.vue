@@ -4,14 +4,14 @@
     import { ref, onMounted, onUnmounted, watch } from 'vue';
     import { useSideScroll } from '@/composables/useSideScrollAnim';
     import { useI18n } from 'vue-i18n';
+    import { useCheckScreen } from '@/utils/screen_check';
 
+    const { isMobile } = useCheckScreen();
     const { locale } = useI18n()
     const { projects } = useProjects();
-
     const { initAnimations, cleanup } = useSideScroll('.scroll', projects);
-
     const hoveredMember = ref<number | null>(null);
-
+    
     const startAnimation = () => {
       initAnimations();
       for(let i = 1; i < projects.value.length+ 1; i ++) {
@@ -19,6 +19,7 @@
       }
     }
     onMounted(() => {
+      /* checkScreen(); */
       startAnimation();
     });
     onUnmounted(() => {
@@ -54,8 +55,8 @@
 
         <div class="order-2 lg:col-start-2 lg:row-start-1 lg:row-span-3 flex flex-col gap-10">
           <div class="relative w-full aspect-video flex items-center justify-center scale-105 2xl:scale-110 origin-top">
-            <img loading="lazy" class="object-contain absolute w-full" src="../assets/svgs/tele.svg" alt="">
-            <img loading="lazy" class="object-contain absolute w-[82%] -translate-y-[8%]" :src="project.image" :alt="project.name">
+            <img loading="lazy" class="object-cover absolute w-[full]" src="../assets/svgs/tele.svg" alt="">
+            <img loading="lazy" class="object-cover absolute w-[82%] -translate-y-[8%]" :src="isMobile ? project.imageMobile : project.image" :alt="project.name">
           </div>
 
           <div v-if="project.teamMembers" class="w-full">

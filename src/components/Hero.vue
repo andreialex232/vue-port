@@ -1,10 +1,14 @@
 <script lang="ts" setup>
-    import videoSource from "@/assets/videos/ninety-dark.mp4"; 
+    import videoSourceDesktop from "@/assets/videos/90_desktop.mp4"
+    import videoSourceMobile from "@/assets/videos/90_mobile.mp4"
     import gsap from "gsap";
     import { ScrollTrigger } from "gsap/ScrollTrigger";
     import TextPlugin from "gsap/TextPlugin";
     import { ref, onMounted, watch } from "vue";
     import { useI18n } from "vue-i18n";
+    import { useCheckScreen } from "@/utils/screen_check";
+
+    const { isMobile } = useCheckScreen();
 
     gsap.registerPlugin(TextPlugin, ScrollTrigger);
 
@@ -55,7 +59,7 @@
         <video
             fetchpriority="high"
             class="absolute -z-10 w-full h-full object-cover pointer-events-none" 
-            :src="videoSource"
+            :src="isMobile ? videoSourceMobile : videoSourceDesktop"
             playsinline autoplay loop muted preload="auto"
             aria-hidden="true"
             title="Background atmospheric video">

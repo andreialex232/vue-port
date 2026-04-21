@@ -111,7 +111,7 @@
                     <div class="w-full mt-4 block lg:hidden">
                         <video
                             loading="lazy" muted autoplay loop playsinline
-                            :src="anim.source" 
+                            :src="anim.sourceMobile" 
                             class="w-full h-auto object-cover"
                         ></video>
                     </div>
@@ -135,7 +135,7 @@
             <div class="hidden lg:block flex-shrink-0 w-full lg:w-1/2 order-2">
                 <video
                     loading="lazy" muted autoplay loop playsinline
-                    :src="anim.source" 
+                    :src="anim.sourceDesktop" 
                     :alt="anim.name" 
                     class="w-full h-auto lg:h-[380px] object-contain transition-transform duration-300"
                 ></video>
