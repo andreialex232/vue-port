@@ -5,8 +5,9 @@ import github_icon from "@/assets/svgs/github-reversed.svg";
 import adobe_ae from "@/assets/svgs/adobe-ae.svg";
 import php from "@/assets/svgs/php.svg";
 import wp from "@/assets/svgs/wordpress.svg";
-import rocket_anim from "@/assets/animations/rocket.mp4";
-import hotel_cms from "@/assets/images/hotel-cms.png";
+import rocket_desktop from "@/assets/animations/rocket_desktop.mp4";
+import rocket_mobile from "@/assets/animations/rocket_mobile.mp4"
+import hotel_cms from "@/assets/images/hotel-cms.webp";
 
 export const useOtherProjects = () => {
     const otherProjects = ref<OtherProjects>({
@@ -60,7 +61,8 @@ export const useOtherProjects = () => {
                 id: "a1",
                 name: "Rocket To Moon Animation",
                 description: "This animation serves as a high energy segment of my Video CV, built with Adobe After Effects and Illustrator. While this project showcases my professional motion skills, my foundation in editing runs much deeper. I've been editing videos and funny moments for over 10 years, transforming a long-term hobby into an instinct for timing, pacing and visual storytelling.",
-                source: rocket_anim,
+                sourceMobile: rocket_mobile,
+                sourceDesktop: rocket_desktop,
                 technology: [{
                     name: "Adobe After Effects",
                     icon: adobe_ae
@@ -107,7 +109,8 @@ interface Animation {
     id: string;
     name: string;
     description: string;
-    source: string;
+    sourceMobile: string;
+    sourceDesktop: string;
     technology: technology[];
 }
 

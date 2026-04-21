@@ -1,4 +1,4 @@
-import { ref } from "vue"
+/* import { ref } from "vue"
 
 export const useAbout = () => {
     const aboutText = ref<About[]> ([
@@ -21,4 +21,4 @@ export const useAbout = () => {
 interface About {
     title: string,
     description: string
-}
+} */

@@ -1,5 +1,4 @@
 import { ref } from "vue";
-import lionheart from "@/assets/images/brothers-lionheart.png"
 import html from "@/assets/svgs/html.svg"
 import css from "@/assets/svgs/css-3.svg"
 import figma from "@/assets/svgs/figma.svg"
@@ -18,13 +17,23 @@ import tailwind from "@/assets/svgs/tailwind.svg"
 import vue from "@/assets/svgs/vue.svg"
 import gtm from "@/assets/svgs/gtm.svg"
 
+import lionheart_desktop from "@/assets/images/brothers_desktop.webp";
+import lionheart_mobile from "@/assets/images/brothers_mobile.webp";
+
+import portfolio_dekstop from "@/assets/images/port_desktop.webp";
+import portfolio_mobile from "@/assets/images/portfolio_mobile.webp";
+
+import cpm_desktop from "@/assets/images/cpm.webp";
+import cpm_mobile from "@/assets/images/cpm.webp";
+
 export const useProjects = () => {
     const projects = ref<Project[]>([
         {
             id: 1,
             name: 'Online Portfolio',
             description: 'This site is a live look at my development philosophy. Beyond the UI, I used this project to master the synergy between Vue and GSAP. I focused heavily on the architectural health by integrating i18n and refactoring bloated components from 130+ lines down to 30. I ensured the codebase stayed lean and maintanable. To round out the experience, I implemented Vite SSG and Unhead for optimized SEO and a fast initial load, resulting in a site that is as scalable as it is performant.',
-            image: lionheart,
+            image: portfolio_dekstop,
+            imageMobile: portfolio_mobile,
             githubLink: {
                 link: "https://github.com/andreialex232/vue-port",
                 icon: reversedGit
@@ -52,7 +61,8 @@ export const useProjects = () => {
             id: 2,
             name: 'The Brothers Lionheart',
             description: "For my first collaborative project, our group created a digital experience for The Brothers Lionheart. We delivered a high-performance interactive site that earned a B-rating for sustainability (Carbon Rating) and exceptional Lighthouse scores: 99 performance, 96 accessibility and 100 in both Best Practices and SEO. It was a masterclass in teamwork and technical exewcution using HTML, CSS and JS.",
-            image: lionheart,
+            image: lionheart_desktop,
+            imageMobile: lionheart_mobile,
             githubLink: {
                 link: "https://github.com/andreialex232/The-Lionheart-Brothers",
                 icon: reversedGit
@@ -102,7 +112,8 @@ export const useProjects = () => {
             id: 3,
             name: 'CPM Ridesharing',
             description: 'Designed, coded and deployed in 2023. This was one of my first major projects. Solving a real-world need for a car rental business catering to rideshare drivers. Built with Angular, Sass and TypeScript, the site was optimized for speed and accessibility from day one. Used Google Tag Manager to further understand the users. Even today it maintains an impressive 95+ performance rating on desktop and a strong 87% on mobile.',
-            image: lionheart,
+            image: cpm_desktop,
+            imageMobile: cpm_mobile,
             githubLink: {
                 link: "https://github.com/andreialex232/cpm-ridesharing",
                 icon: reversedGit
@@ -138,6 +149,7 @@ interface Project {
     name: string;
     description: string;
     image: string;
+    imageMobile: string;
     githubLink: { 
         link: string,
         icon: string
