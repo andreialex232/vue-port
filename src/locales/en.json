@@ -1,4 +1,13 @@
 {
+  "meta": {
+    "title": "Alex Andrei Vătui {'|'} Frontend Developer",
+    "description": "Specializing in Vue, GSAP and Tailwind CSS to build high-performance, animated web experiences. Currently expanding in to Full-stack development with .NET, Node.js and MongoDB",
+    "ogTitle": "Alex Vătui Web Dev Portfolio",
+    "ogDescription": "Explore a portfolio built with Vue, GSAP and modern CSS. Discover how I combine creative design (Adobe CC/Figma) with technical expertise in JavaScript.",
+    "ogImageAlt": "A showcase of web projects featuring Vue, GSAP animations and modern frontend architecture.",
+    "twitterTitle": "Alex Vătui Web Dev Portfolio",
+    "twitterDescription": "Creating elegant digital solutions using Vue, GSAP and Tailwind. Currently exploring the power of .NET and TypeScript."
+  },
   "contact": {
     "heading": "Let's Connect",
     "subheading": "I'm always open to new projects and creative collaborations.",
