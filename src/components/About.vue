@@ -137,7 +137,7 @@
 
     <section class="z-100 video-section absolute inset-0 flex flex-col justify-center items-center px-8 lg:px-12 2xl:px-20">
         <div v-if="isVideoVisible" class="w-full max-w-6xl flex flex-col items-center">
-            <h3 class="lg:text-2xl text-2xl font-bold pb-4 self-start">Let's Discuss the Logic: A Portfolio Introduction</h3>
+            <h3 class="lg:text-2xl text-2xl font-bold pb-4 self-start">{{ $t('portfolioVideoTitle') }}</h3>
             <video
                 :poster="posterForVideo"
                 class="object-cover w-full h-auto shadow-2xl rounded-xl border border-primary/20"
