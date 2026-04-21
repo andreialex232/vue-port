@@ -55,7 +55,7 @@
     <article 
         v-for="(poster, index) in otherProjects.posters" 
         :key="poster.id"
-        class="bg-secondary text-primary flex flex-col justify-between p-6 transition-shadow duration-300 hover:shadow-md hover:shadow-lg h-[800px] overflow-hidden"
+        class="bg-secondary text-primary flex flex-col justify-between p-6 transition-shadow duration-300 shadow-md hover:shadow-lg h-[800px] overflow-hidden"
     >
         <div class="flex-1 flex flex-col justify-between h-full py-2">
             
