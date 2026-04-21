@@ -1,6 +1,6 @@
 <script lang="ts" setup>
     import videoSourceDesktop from "@/assets/videos/90_desktop.mp4"
-    import videoSourceMobile from "@/assets/videos/90_mobile.mp4"
+    import videoSourceMobile from "@/assets/videos/90_mobile_2.mp4"
     import gsap from "gsap";
     import { ScrollTrigger } from "gsap/ScrollTrigger";
     import TextPlugin from "gsap/TextPlugin";
