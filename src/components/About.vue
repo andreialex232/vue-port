@@ -75,24 +75,24 @@
 </script>
 
 <template>
-    <section aria-labelledby="mobile-heading" class="mt-10 mb-20 lg:hidden">
-        <div class="flex justify-center items-center h-16 bg-secondary text-primary font-secondary">
-            <h2 id="mobile-heading" class="text-primary font-secondary text-2xl font-bold mb-4">{{ $t('coreHeading') }}</h2>
+    <section aria-labelledby="mobile-heading" class="overflow-hidden mt-10 mb-20 lg:hidden">
+        <div class="flex justify-center  items-center h-16 bg-secondary text-primary font-secondary">
+            <h2 id="mobile-heading" class=" text-primary font-secondary text-2xl font-bold mb-4">{{ $t('coreHeading') }}</h2>
         </div>
         
         <div
             v-for="(item, index) in $tm('aboutText')"
             :key="index"
-            :class="`mobile_card_${index} font-secondary grid grid-cols-1 gap-4 p-4`">
-            <article class="bg-secondary text-primary rounded-xl border border-primary p-6 shadow-sm transition-hover hover:shadow-md">
-                <h3 class="text-xl font-bold ">{{ item.title }}</h3>
+            :class="`mobile_card_${index}  font-secondary grid grid-cols-1 gap-4 p-4`">
+            <article class="bg-secondary text-primary  rounded-xl border border-primary p-6 shadow-sm transition-hover hover:shadow-md">
+                <h3 class="text-xl font-bold">{{ item.title }}</h3>
                 <p class="text-md">{{ item.description }}</p>
             </article>
         </div>
     </section>
 
-    <section aria-labelledby="desktop-heading" class="lg:mt-30 xl:pt-20 pl-6 h-dvh pt-20 desktop-section hidden lg:flex bg-secondary text-primary w-dvw lg:mb-40 xl:pb-30 font-secondary">
-        <div class="flex-1 flex flex-col justify-center items-center">
+    <section aria-labelledby="desktop-heading" class="lg:mt-30 xl:pt-20 pl-6 min-h-dvh pt-20 desktop-section hidden lg:flex bg-secondary text-primary w-dvw lg:mb-40 xl:pb-30 font-secondary">
+        <div class="flex-1 flex flex-col justify-center items-center ">
             <div class="w-full max-w-2xl">
                 <header class="flex justify-center items-start h-16 bg-secondary text-primary font-secondary">
                     <h2 id="desktop-heading" class="text-primary font-secondary text-4xl 2xl:text-5xl font-bold">{{ $t('coreHeading') }}</h2>
