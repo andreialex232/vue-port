@@ -42,7 +42,7 @@
         <div class="flex-shrink-0">
             <img 
                 loading="lazy"
-                :src="poster.img" 
+                :src="poster.imgDesktop" 
                 :alt="poster.name" 
                 class="w-full sm:h-[400px] lg:h-[250px] xl:h-[300px] 2xl:h-[410px] object-cover rounded-lg shadow-2xl transition-transform duration-300 hover:scale-105"
             >
@@ -67,7 +67,7 @@
             <div class="my-4">
                 <img 
                     loading="lazy"
-                    :src="poster.img" 
+                    :src="poster.imgMobile"     
                     :alt="poster.name" 
                     class="w-full h-[340px] sm:h-[300px] md:h-[250px] object-contain rounded-lg transition-transform duration-300 hover:scale-105"
                 >

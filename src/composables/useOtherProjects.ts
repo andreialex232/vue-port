@@ -1,5 +1,7 @@
 import { ref } from "vue";
 import police_brutality_poster from "@/assets/images/posters/police_comp.png";
+import cat_desktop from "@/assets/images/posters/info_cat_desktop.webp";
+import cat_mobile from "@/assets/images/posters/info_cat_mobile.webp";
 import adobe_ai from "@/assets/svgs/adobe-ai.svg";
 import github_icon from "@/assets/svgs/github-reversed.svg";
 import adobe_ae from "@/assets/svgs/adobe-ae.svg";
@@ -16,7 +18,8 @@ export const useOtherProjects = () => {
                 id: "p1",
                 name: "Police Brutality Awareness Poster",
                 subheading: "The Deadly Pattern",
-                img: police_brutality_poster,
+                imgDesktop: police_brutality_poster,
+                imgMobile: police_brutality_poster,
                 technology: {
                     name: "Adobe Illustrator",
                     icon: adobe_ai
@@ -25,14 +28,15 @@ export const useOtherProjects = () => {
             },
             {
                 id: "p2",
-                name: "Marketing Poster For Racing Event",
-                subheading: "Racing 230",
-                img: police_brutality_poster,
+                name: "Cat Infographic Poster",
+                subheading: "Cats In Shelters",
+                imgDesktop: cat_desktop,
+                imgMobile: cat_mobile,
                 technology: {
                     name: "Adobe Illustrator",
                     icon: adobe_ai
                 },
-                description: "Poster design for a local racing event, highlighting the excitement and thrill of the competition. The design incorporates dynamic imagery, bold typography, and vibrant colors to capture the attention of potential attendees and convey the energy of the event."
+                description: "Designed to raise awareness about the number of cats in shelters while also mentioning why you should get one off the streets."
             },
         ],
         wordpress: [
@@ -91,7 +95,8 @@ interface Poster {
     id: string;
     name: string;
     subheading: string;
-    img: string;
+    imgDesktop: string;
+    imgMobile: string;
     description: string;
     technology: technology;
 }
