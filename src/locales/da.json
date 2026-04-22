@@ -54,9 +54,9 @@
         "description": "Denne infografik-plakat viser den vedvarende stigning i politivold i USA på trods af årtiers reformbestræbelser. Ved at sammenstille statistiske data, profilerede casestudier og politisk analyse, illustrerer designet med beviser, hvordan systemiske svigt ofte undergraver lovgivningsmæssige ændringer."
       },
       {
-        "name": "Plakat 2",
-        "subheading": "Visuelt koncept",
-        "description": "Et dyk ned i grafiske designprincipper ved hjælp af moderne værktøjer."
+        "name": "Infografik plakat om katte",
+        "subheading": "Katte på internater",
+        "description": "Designet til at skabe opmærksomhed om antallet af katte på internater, samtidig med at den fremhæver fordelene ved at adoptere en kat fra gaden."
       }
     ],
     "animations": [
@@ -112,11 +112,11 @@
   "aboutText": [
     {
       "title": "Rejsen",
-      "description": "Oprindeligt fra Rumænien, bor og studerer jeg nu i Danmark. En af grundene til, at jeg valgte at flytte hertil, var min beundring for Skandinavien – ikke kun kulturen og sproget, men hvordan teknologi og samfund er bygget på effektivitet og høje standarder. Jeg ønskede at fordybe mig i et miljø, der værdsætter kvalitet og logik, og jeg har brugt min tid her på at tilpasse min tekniske tilgang til at matche de forventninger."
+      "description": "Oprindeligt fra Rumænien, bor og studerer jeg nu i Danmark. En af grundene til, at jeg valgte at flytte hertil, var min beundring for Skandinavien ikke kun kulturen og sproget, men hvordan teknologi og samfund er bygget på effektivitet og høje standarder. Jeg ønskede at fordybe mig i et miljø, der værdsætter kvalitet og logik, og jeg har brugt min tid her på at tilpasse min tekniske tilgang til at matche de forventninger."
     },
     {
       "title": "Lige nu...",
-      "description": "Jeg er i gang med min uddannelse i Multimediedesign og ser frem mod mit 4. semester. Jeg søger en praktikplads med start i januar 2027, men jeg er også interesseret i at finde et relevant studierelevant job inden da. Selvom dette studie dækker mange forskellige områder, har jeg indset, at jeg er langt mere tiltrukket af den tekniske side frem for blot at gøre ting pæne."
+      "description": "Jeg er i gang med min uddannelse i Multimediedesign og ser frem mod mit 4. semester. Jeg søger en praktikplads med start i januar 2027, men jeg er også interesseret i at finde et studiejob inden da. Selvom dette studie dækker mange forskellige områder, har jeg indset, at jeg er langt mere tiltrukket af den tekniske side frem for blot at gøre ting pæne."
     },
     {
       "title": "Målet...",
