@@ -31,6 +31,11 @@ body {
     background-color: var(--color-secondary);
 }
 
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 @keyframes blink {
   from, to { opacity: 1; }
   50% { opacity: 0; }
