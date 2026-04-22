@@ -9,7 +9,7 @@
     "twitterDescription": "Skapar eleganta digitala lösningar med Vue, GSAP och Tailwind. Utforskar just nu kraften i .NET och TypeScript."
   },
   "contact": {
-    "heading": "Låt oss höras",
+    "heading": "Hör av dig",
     "subheading": "Jag är alltid öppen för nya projekt och kreativa samarbeten.",
     "form": {
       "labels": {
@@ -54,15 +54,15 @@
         "description": "Denna infografik-affisch visar den ihållande ökningen av polisvåld i USA trots årtionden av reformförsök. Genom att sammanställa statistiska data, uppmärksammade fallstudier och politisk analys, illustrerar designen med bevis hur systemfel ofta undergräver lagstiftningsändringar."
       },
       {
-        "name": "Affisch 2",
-        "subheading": "Visuellt koncept",
-        "description": "En djupdykning i grafiska designprinciper med hjälp av moderna verktyg."
+        "name": "Infografik poster om katter",
+        "subheading": "Katter på djurhem",
+        "description": "Designad för att öka medvetenheten om antalet katter på djurhem, samtidigt som den belyser fördelarna med att adoptera en katt från gatan."
       }
     ],
     "animations": [
       {
         "name": "Raket till månen-animation",
-        "description": "Denna animation fungerar som ett energiskt segment i mitt Video-CV, skapat med Adobe After Effects och Illustrator. Även om detta projekt visar mina professionella färdigheter inom motion design, stäcker sig min grund i redigering mycket djupare. Jag har redigerat videor och 'funny moments' i över 10 år, vilket har förvandlat en mångårig hobby till en instinkt för timing, tempo och visuellt berättande."
+        "description": "Denna animation fungerar som ett energiskt segment i mitt Video-CV, skapat med Adobe After Effects och Illustrator. Även om detta projekt visar mina professionella färdigheter inom motion design, sträcker sig min grund i redigering mycket djupare. Jag har redigerat videor och 'funny moments' i över 10 år, vilket har förvandlat en mångårig hobby till en instinkt för timing, tempo och visuellt berättande."
       }
     ],
     "wordpress": [
@@ -112,15 +112,15 @@
   "aboutText": [
     {
       "title": "Resan",
-      "description": "Ursprungligen från Rumänien, men bor och studerar nu i Danmark. En av anledningarna till att jag valde att flytta hit var min beundran för Skandinavien – inte bara kulturen och språket, utan hur teknologi och samhälle är byggt på effektivitet och höga standarder. Jag ville fördjupa mig i en miljö som värdesätter kvalitet och logik, och jag har använt min tid här till att anpassa min tekniska ansats för att matcha dessa förväntningar."
+      "description": "Ursprungligen från Rumänien, men bor och studerar nu i Danmark. En av anledningarna till att jag valde att flytta hit var min beundran för Skandinavien – inte bara kulturen och språket, utan hur teknologi och samhälle är byggt på effektivitet och höga standarder. Jag ville fördjupa mig i en miljö som värdesätter kvalitet och logik, och jag har använt min tid här till att anpassa mina tekniska färdigheter för att matcha dessa förväntningar."
     },
     {
       "title": "Just nu...",
-      "description": "Jag läser min examen i Multimedia Design och ser fram emot min fjärde termin. Jag söker en praktikplats med start i januari 2027, men jag är också intresserad av att hitta ett relevant studentjobb inom området innan dess. Även om denna utbildning täcker många olika områden, har jag insett att jag dras mycket mer till den tekniska sidan än att bara göra saker snygga."
+      "description": "Jag läser min examen i Multimedia Design och ser fram emot min fjärde termin. Jag söker en praktikplats med start i januari 2027, men jag är också intresserad av att hitta ett relevant studentjobb inom området innan dess. Även om denna utbildningen täcker många olika områden, har jag insett att jag dras mycket mer till den tekniska sidan än att bara göra saker snygga."
     },
     {
       "title": "Målet...",
-      "description": "Är att läsa påbyggnadsutbildningen i webbutveckling efter Multimedia Design för att bli fullstack-utvecklare, och jag skulle även vilja nosa på DevOps vid något tillfälle för att se hur infrastrukturen och driftsättningssidan fungerar."
+      "description": "Är att läsa påbyggnadsutbildningen i webbutveckling efter Multimedia Design för att bli fullstack-utvecklare."
     }
   ],
   "videoPrompt": {
