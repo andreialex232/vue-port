@@ -1,48 +1,24 @@
-# vue-port
+Welcome! This is the repository for my official portfolio. This project was a major milestone for me because it was the first time I had to manage the entire process. From the initial design and "client" requirements to the final lines of code.
 
-This template should help get you started developing with Vue 3 in Vite.
+### 🎯 The Goal
+I wanted to move away from just "making things work" and focus on creating a professional product. This meant paying attention to the small details that make a website feel high-quality, like smooth transitions and fast loading times.
 
-## Recommended IDE Setup
+---
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## 🛠️ Built With
 
-## Recommended Browser Setup
+I picked these specific technologies to challenge myself and learn industry-standard tools:
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+* **Vue.js:** Used for a clean, component-based structure.
+* **GSAP (GreenSock):** I used this for all the animations. It was a big step up from basic CSS transitions and makes the site feel much more interactive.
+* **i18n:** Implemented to support multiple languages, making the site accessible to everyone.
+* **Vite SSG & Unhead:** I explored these to improve SEO and performance. It was my first real look into how search engines "see" a site and how to make it rank better.
 
-## Type Support for `.vue` Imports in TS
+---
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+## 💡 What I Learned
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+This project wasn't just about coding; it was about problem-solving. I learned how to:
+1.  **Balance Roles:** Managing the design while worrying about the technical limitations.
+2.  **Optimize:** Using Static Site Generation to make sure the portfolio loads instantly.
+3.  **Polish:** Realizing that the last 10% of "polish" (animations, SEO, meta tags) takes as much work as the first 90%.
