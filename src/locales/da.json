@@ -9,7 +9,7 @@
     "twitterDescription": "Skaber elegante digitale løsninger ved hjælp af Vue, GSAP og Tailwind. Udforsker lige nu styrken i .NET og TypeScript."
   },
   "contact": {
-    "heading": "Lad os skabe kontakt",
+    "heading": "Lad os komme i kontakt",
     "subheading": "Jeg er altid åben for nye projekter og kreative samarbejder.",
     "form": {
       "labels": {
@@ -82,15 +82,15 @@
     "list": [
       {
         "name": "Online Portefølje",
-        "description": "Dette site er et direkte indblik i min udviklingsfilosofi. Udover brugerfladen brugte jeg dette projekt til at mestre synergien mellem Vue og GSAP. Jeg fokuserede kraftigt på den arkitektoniske sundhed ved at integrere i18n og refaktorere tunge komponenter fra 130+ linjer ned til 30. Jeg sikrede, at kildekoden forblev let og vedligeholdelsesvenlig. For at fuldende oplevelsen implementerede jeg Vite SSG og Unhead for optimeret SEO og hurtig indlæsning, hvilket resulterede i et site, der er både skalérbart og performant."
+        "description": "Jeg har brugt dette projekt til at lære, hvordan man får Vue og GSAP til at spille sammen for at skabe flydende animationer. Jeg har brugt meget tid på at gøre koden ren og overskuelig. For eksempel har jeg simuleret et API-svar ved at give hvert sprog sin egen JSON-fil for at gøre organiseringen bedre. Jeg har også forenklet tunge filer og reduceret 130 linjers kode til kun 30. For at gøre siden hurtigere og forbedre SEO, har jeg implementeret Vite SSG og Unhead. Resultatet er en side, der ser godt ud, loader hurtigt og er nem at vedligeholde."
       },
       {
         "name": "Brødrene Løvehjerte",
-        "description": "I mit første samarbejdsprojekt skabte vores gruppe en digital oplevelse for Brødrene Løvehjerte. Vi leverede et højtydende interaktivt site, der opnåede en B-rating for bæredygtighed (Carbon Rating) og exceptionelle Lighthouse-scores: 99 i performance, 96 i tilgængelighed og 100 i både Best Practices og SEO. Det var en masterclass i teamwork og teknisk udførelse ved hjælp af HTML, CSS og JS."
+        "description": "I mit første samarbejdsprojekt skabte vores gruppe en digital oplevelse for Brødrene Løvehjerte. Vi leverede et højtydende interaktivt site, der opnåede en B-rating for bæredygtighed (Carbon Rating) og exceptionelle Page Speed Insights scores: 99 i performance, 96 i tilgængelighed og 100 i både Best Practices og SEO. Det var masterclass i teamwork og teknisk udførelse ved hjælp af HTML, CSS og JS."
       },
       {
         "name": "CPM Ridesharing",
-        "description": "Designet, kodet og lanceret i 2023. Dette var et af mine første store projekter, som løste et reelt behov for en biludlejningsvirksomhed, der betjener rideshare-chauffører. Bygget med Angular, Sass og TypeScript, blev sitet optimeret til hastighed og tilgængelighed fra dag ét. Jeg brugte Google Tag Manager for bedre at forstå brugerne. Selv i dag opretholder det en imponerende performance-rating på 95+ på desktop og stærke 87% på mobil."
+        "description": "Designet, kodet og lanceret i 2023. Dette var et af mine første store projekter, som løste et reelt behov for en biludlejningsvirksomhed, der betjener rideshare-chauffører. Bygget med Angular, Sass og TypeScript, blev sitet optimeret til hastighed og tilgængelighed fra dag ét. Jeg brugte Google Tag Manager for bedre at forstå brugerne. Ifølge PageSpeed Insights opretholder siden stadig en imponerende performance-score på 95+ på desktop og en stærk score på 87 % på mobil i dag."
       }
     ]
   },
@@ -112,7 +112,7 @@
   "aboutText": [
     {
       "title": "Rejsen",
-      "description": "Oprindeligt fra Rumænien, bor og studerer jeg nu i Danmark. En af grundene til, at jeg valgte at flytte hertil, var min beundring for Skandinavien ikke kun kulturen og sproget, men hvordan teknologi og samfund er bygget på effektivitet og høje standarder. Jeg ønskede at fordybe mig i et miljø, der værdsætter kvalitet og logik, og jeg har brugt min tid her på at tilpasse min tekniske tilgang til at matche de forventninger."
+      "description": "Oprindeligt fra Rumænien, jeg bor og studerer nu i Danmark. En af grundene til, at jeg valgte at flytte hertil, var min beundring for Skandinavien ikke kun kulturen og sproget, men hvordan teknologi og samfund er bygget på effektivitet og høje standarder. Jeg ønskede at fordybe mig i et miljø, der værdsætter kvalitet og logik, og jeg har brugt min tid her på at tilpasse min tekniske tilgang til at matche de forventninger."
     },
     {
       "title": "Lige nu...",
@@ -120,7 +120,7 @@
     },
     {
       "title": "Målet...",
-      "description": "Er at tage top-up uddannelsen i Webudvikling efter Multimediedesign for at blive full-stack udvikler, og jeg vil endda gerne snuse til DevOps på et tidspunkt for at se, hvordan infrastrukturen og deployment-siden af tingene fungerer."
+      "description": "Er at tage top-up uddannelsen i Webudvikling efter Multimediedesign for at blive full-stack udvikler."
     }
   ],
   "videoPrompt": {

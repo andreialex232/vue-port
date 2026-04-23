@@ -83,15 +83,15 @@
     "list": [
       {
         "name": "Online Portfolio",
-        "description": "This site is a live look at my development philosophy. Beyond the UI, I used this project to master the synergy between Vue and GSAP. I focused heavily on the architectural health by integrating i18n and refactoring bloated components from 130+ lines down to 30. I ensured the codebase stayed lean and maintanable. To round out the experience, I implemented Vite SSG and Unhead for optimized SEO and a fast initial load, resulting in a site that is as scalable as it is performant."
+        "description": "I used this project to learn how to make Vue and GSAP work together for smooth animations. I spent a lot of time making the code clean and easy to manage. For example, I mimicked an API response by giving each language its own JSON file for better organization. I also simplified bloated files, refactoring 130 lines of code down to just 30. To make the site faster and improve SEO, I implemented Vite SSG and Unhead. The result is a site that looks great, loads quickly, and is easy to maintain."
       },
       {
         "name": "The Brothers Lionheart",
-        "description": "For my first collaborative project, our group created a digital experience for The Brothers Lionheart. We delivered a high-performance interactive site that earned a B-rating for sustainability (Carbon Rating) and exceptional Lighthouse scores: 99 performance, 96 accessibility and 100 in both Best Practices and SEO. It was a masterclass in teamwork and technical exewcution using HTML, CSS and JS."
+        "description": "For my first collaborative project, our group created a digital experience for The Brothers Lionheart. We delivered a high-performance interactive site that earned a B-rating for sustainability (Carbon Rating) and exceptional Page Speed Insights scores: 99 performance, 96 accessibility and 100 in both Best Practices and SEO. It was a masterclass in teamwork and technical execution using HTML, CSS and JS."
       },
       {
         "name": "CPM Ridesharing",
-        "description": "Designed, coded and deployed in 2023. This was one of my first major projects. Solving a real-world need for a car rental business catering to rideshare drivers. Built with Angular, Sass and TypeScript, the site was optimized for speed and accessibility from day one. Used Google Tag Manager to further understand the users. Even today it maintains an impressive 95+ performance rating on desktop and a strong 87% on mobile."
+        "description": "Designed, coded and deployed in 2023. This was one of my first major projects. Solving a real-world need for a car rental business catering to rideshare drivers. Built with Angular, Sass and TypeScript, the site was optimized for speed and accessibility from day one. Used Google Tag Manager to further understand the users. According to Page Speed Insights the site still maintains an impressive 95+ performance rating on desktop and a strong 87% on mobile even today."
       }
     ]
   },

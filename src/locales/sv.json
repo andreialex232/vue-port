@@ -6,7 +6,7 @@
     "ogDescription": "Utforska en portfölj byggd med Vue, GSAP och modern CSS. Se hur jag kombinerar kreativ design (Adobe CC/Figma) med teknisk expertis inom JavaScript.",
     "ogImageAlt": "En presentation av webbprojekt med Vue, GSAP-animationer och modern frontend-arkitektur.",
     "twitterTitle": "Alex Vătui Webbportfölj",
-    "twitterDescription": "Skapar eleganta digitala lösningar med Vue, GSAP och Tailwind. Utforskar just nu kraften i .NET och TypeScript."
+    "twitterDescription": "Skapar eleganta digitala lösningar med Vue, GSAP och Tailwind. Jag testar att bygga appar med .NET och TypeScript."
   },
   "contact": {
     "heading": "Hör av dig",
@@ -86,11 +86,11 @@
       },
       {
         "name": "Bröderna Lejonhjärta",
-        "description": "I mitt första samarbetsprojekt skapade vår grupp en digital upplevelse för Bröderna Lejonhjärta. Vi levererade en högpresterande interaktiv sajt som fick ett B-betyg för hållbarhet (Carbon Rating) och exceptionella Lighthouse-resultat: 99 i prestanda, 96 i tillgänglighet och 100 i både Best Practices och SEO. Det var en masterclass i lagarbete och tekniskt utförande med hjälp av HTML, CSS och JS."
+        "description": "I mitt första samarbetsprojekt skapade vår grupp en digital upplevelse för Bröderna Lejonhjärta. Vi levererade en högpresterande interaktiv sajt som fick ett B-betyg för hållbarhet (Carbon Rating) och exceptionella Page Speed Insights resultat: 99 i prestanda, 96 i tillgänglighet och 100 i både Best Practices och SEO. Det var en masterclass i lagarbete och tekniskt utförande med hjälp av HTML, CSS och JS."
       },
       {
         "name": "CPM Ridesharing",
-        "description": "Designad, kodad och lanserad 2023. Detta var ett av mina första stora projekt som löste ett verkligt behov för ett biluthyrningsföretag som betjänar rideshare-förare. Byggd med Angular, Sass och TypeScript, optimerades sajten för hastighet och tillgänglighet från dag ett. Jag använde Google Tag Manager för att bättre förstå användarna. Även idag upprätthåller den en imponerande prestanda på 95+ på desktop och starka 87% på mobilen."
+        "description": "Designad, kodad och lanserad 2023. Detta var ett av mina första stora projekt som löste ett verkligt behov för ett biluthyrningsföretag som betjänar rideshare-förare. Byggd med Angular, Sass och TypeScript, optimerades sajten för hastighet och tillgänglighet från dag ett. Jag använde Google Tag Manager för att bättre förstå användarna. Enligt Page Speed Insights håller sajten fortfarande en imponerande prestanda på 95+ för desktop och 87 % på mobilen än idag."
       }
     ]
   },
