@@ -55,8 +55,8 @@
 
         <div class="order-2 lg:col-start-2 lg:row-start-1 lg:row-span-3 flex flex-col gap-10">
           <div class="relative w-full aspect-video flex items-center justify-center scale-105 2xl:scale-110 origin-top">
-            <img loading="lazy" class="object-cover absolute w-[full]" src="../assets/svgs/tele.svg" alt="">
-            <img loading="lazy" class="object-cover absolute w-[82%] -translate-y-[8%]" :src="isMobile ? project.imageMobile : project.image" :alt="project.name">
+            <img class="object-cover absolute w-[full]" src="../assets/svgs/tele.svg" alt="">
+            <img class="object-cover absolute w-[82%] -translate-y-[8%]" :src="isMobile ? project.imageMobile : project.image" :alt="project.name">
           </div>
 
           <div v-if="project.teamMembers" class="w-full">
