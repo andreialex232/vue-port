@@ -131,7 +131,7 @@
         </div>
 
         <div class="mt-8">
-            <button @click="handleGettingVideoCv" :disabled="isVideoVisible" class="btn" aria-label="Yes please, show me the video version">{{ $t('videoPrompt.button') }}</button>
+            <button id="show_video" @click="handleGettingVideoCv" :disabled="isVideoVisible" class="btn" aria-label="Yes please, show me the video version">{{ $t('videoPrompt.button') }}</button>
         </div>
     </div>
 
