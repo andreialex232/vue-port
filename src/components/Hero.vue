@@ -6,11 +6,11 @@
     import TextPlugin from "gsap/TextPlugin";
     import { ref, onMounted, watch } from "vue";
     import { useI18n } from "vue-i18n";
-    import { useCheckScreen } from "@/utils/screen_check";
+    import { useCheckScreenListener } from "@/utils/screen_check";
     import { useUserAgent } from "@/utils/browser_check";
 
     const { isSafari } = useUserAgent();
-    const { isMobile } = useCheckScreen();
+    const { isMobile } = useCheckScreenListener();
 
     gsap.registerPlugin(TextPlugin, ScrollTrigger);
 

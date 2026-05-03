@@ -7,7 +7,7 @@
     const navComponent: any = ref<InstanceType<typeof navComponent> | null >(null);
     
     const isOpen = ref(false);
-    const lang = ref(sessionStorage.getItem('lang') || 'english');
+    const lang = ref((typeof window !== 'undefined') ? sessionStorage.getItem('lang') || 'english' : 'english');
 
     // opens and closes lang menu
     const toggleLangMenu = () => {

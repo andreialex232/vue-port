@@ -4,9 +4,9 @@
     import { ref, onMounted, onUnmounted, watch } from 'vue';
     import { useSideScroll } from '@/composables/useSideScrollAnim';
     import { useI18n } from 'vue-i18n';
-    import { useCheckScreen } from '@/utils/screen_check';
+    import { useCheckScreenListener } from '@/utils/screen_check';
 
-    const { isMobile } = useCheckScreen();
+    const { isMobile } = useCheckScreenListener();
     const { locale } = useI18n()
     const { projects } = useProjects();
     const { initAnimations, cleanup } = useSideScroll('.scroll', projects);

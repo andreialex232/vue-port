@@ -5,7 +5,7 @@ import sv from './locales/sv.json';
 
 const i18n = createI18n({
     legacy: false,
-    locale: localStorage.getItem('user-locale') || 'en',
+    locale: (typeof localStorage !== 'undefined') ? localStorage.getItem('user-locale') || 'en' : 'en',
     fallbackLocale: 'en',
     messages : {
       en,

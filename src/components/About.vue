@@ -6,9 +6,9 @@
     import posterForVideo from "@/assets/images/poster_for_video_cv.webp";
     import { fadeIn } from '@/utils/animations';
     import { useI18n } from 'vue-i18n';
-    import { useCheckScreen } from '@/utils/screen_check';
+    import { useCheckScreenListener } from '@/utils/screen_check';
 
-    const { isMobile } = useCheckScreen();
+    const { isMobile } = useCheckScreenListener();
     const { locale, tm } = useI18n()
     const videoWord = ref(null);
     const isVideoVisible = ref(false);
@@ -18,27 +18,28 @@
     }
 
     const getVideoCv = () => {
-    const tl = gsap.timeline();
+        
+        const tl = gsap.timeline();
 
-    tl.to(".desktop-video-side > div", { // Targets the text container
-        x: window.innerWidth,
-        duration: 0.6,
-        ease: "power2.in"
-    })
-    .to({}, { duration: 0 }) // This is your "pause for a second"
-    .fromTo(".video-section", 
-        { x: window.innerWidth }, // Start position (offscreen left)
-        { 
-            x: 0,                   // End position (center/original)
-            duration: 0.8, 
-            ease: "power2.out",
-            onStart: () => {
-                // Ensure the video section is visible when animation starts
-                gsap.set(".video-section", { opacity: 1 });
+        tl.to(".desktop-video-side > div", { // Targets the text container
+            x: (typeof window !== 'undefined') ? window.innerWidth : 0,
+            duration: 0.6,
+            ease: "power2.in"
+        })
+        .to({}, { duration: 0 }) // This is your "pause for a second"
+        .fromTo(".video-section", 
+            { x: (typeof window !== 'undefined') ? window.innerWidth : 0 }, // Start position (offscreen left)
+            { 
+                x: 0,                   // End position (center/original)
+                duration: 0.8, 
+                ease: "power2.out",
+                onStart: () => {
+                    // Ensure the video section is visible when animation starts
+                    gsap.set(".video-section", { opacity: 1 });
+                }
             }
-        }
-    );
-}
+        );
+    }
 
     const handleGettingVideoCv = () => {
         getVideoCv();
@@ -56,6 +57,10 @@
     }
     
     onMounted(() => {
+        window.addEventListener('resize', () => {
+            
+        });
+
         const translatedData = tm('aboutText') as any[];
         initAboutCardsAnimation(translatedData);
         fadeIn(".desktop-video-side", 'y');
