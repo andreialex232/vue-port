@@ -36,19 +36,29 @@
         .to({}, { duration: 2 })
         .to(kindOfDev.value, { duration: 0.8, text: "", ease: "power2.inOut" });
 
-        ScrollTrigger.create({
-            trigger: ".video-container",
-            start: "top center",
-            onEnter: () => devKindTl?.play(),
-            onEnterBack: () => devKindTl?.play(),
-            onLeave: () => devKindTl?.pause(),
-            onLeaveBack: () => devKindTl?.pause(),
-            id: "heroTextTrigger"
+        // Defer ScrollTrigger creation to not block FCP
+        requestAnimationFrame(() => {
+            setTimeout(() => {
+                ScrollTrigger.create({
+                    trigger: ".video-container",
+                    start: "top center",
+                    onEnter: () => devKindTl?.play(),
+                    onEnterBack: () => devKindTl?.play(),
+                    onLeave: () => devKindTl?.pause(),
+                    onLeaveBack: () => devKindTl?.pause(),
+                    id: "heroTextTrigger"
+                });
+            }, 200);
         });
     }
 
     onMounted(() => {
-        initAnimation()
+        // Defer animation setup to not block FCP
+        requestAnimationFrame(() => {
+            setTimeout(() => {
+                initAnimation()
+            }, 100);
+        });
     });
 
     watch(locale, () => {
@@ -63,7 +73,7 @@
             fetchpriority="high"
             class="absolute -z-10 w-full h-full object-cover pointer-events-none select-none" 
             :src="isMobile ? videoSourceMobile : videoSourceDesktop"
-            playsinline autoplay loop muted preload="auto"
+            playsinline autoplay loop muted preload="metadata"
             aria-hidden="true"
             title="Background atmospheric video">
         </video>

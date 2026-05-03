@@ -1,11 +1,14 @@
 <script lang="ts" setup>
+    import { defineAsyncComponent } from 'vue';
     import Hero from '@/components/Hero.vue';
-    import About from '@/components/About.vue';
-    import Contact from '@/components/Contact.vue';
-    import Projects from '@/components/Projects.vue';
-    import OtherProjects from '@/components/OtherProjects.vue';
-    import Techstack from '@/components/Techstack.vue';
     import coverImg from '@/assets/images/social_media_cover3.webp';
+
+    // Lazy-load below-fold components to reduce initial bundle
+    const About = defineAsyncComponent(() => import('@/components/About.vue'));
+    const Contact = defineAsyncComponent(() => import('@/components/Contact.vue'));
+    const Projects = defineAsyncComponent(() => import('@/components/Projects.vue'));
+    const OtherProjects = defineAsyncComponent(() => import('@/components/OtherProjects.vue'));
+    const Techstack = defineAsyncComponent(() => import('@/components/Techstack.vue'));
 
     import { useHead, useSeoMeta } from '@unhead/vue';
     import { useI18n } from 'vue-i18n';
